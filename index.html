@@ -4,578 +4,219 @@
     <title>RentAthens – Find Your Ideal Place in Athens</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="RentAthens – quality rooms and studios in Athens since 2018. Elpidos city centre and Kallithea locations." />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-/* ═══════════════════════════════════════════════════════════
-   RESET & BASE
-═══════════════════════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    background: #1c2230;
-    color: #c8d0e0;
-    line-height: 1.7;
-    overflow-x: hidden;
+/* ══ RESET ══════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#c8d0e0;overflow-x:hidden;line-height:1.7}
+
+/* ══ VARIABLES ══════════════════════════════════════════════════ */
+:root{
+    --navy:#1c2230;--navy-mid:#232d40;--navy-light:#2e3a52;
+    --accent:#4db8c4;--accent2:#e8875a;
+    --white:#ffffff;--off-white:#e8edf5;--text-dim:#8a96ae;
+    --border:rgba(255,255,255,0.08);--card-bg:#232d40;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   COLOURS  (original Helios-inspired palette)
-═══════════════════════════════════════════════════════════ */
-:root {
-    --navy:       #1c2230;
-    --navy-mid:   #232d40;
-    --navy-light: #2e3a52;
-    --accent:     #4db8c4;   /* teal/cyan highlight */
-    --accent2:    #e8875a;   /* warm terracotta accent */
-    --white:      #ffffff;
-    --off-white:  #e8edf5;
-    --text-dim:   #8a96ae;
-    --border:     rgba(255,255,255,0.08);
-    --card-bg:    #232d40;
+/* ══ NAV ════════════════════════════════════════════════════════ */
+#navbar{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.1rem 3rem;background:rgba(28,34,48,0);
+    transition:background .4s,box-shadow .4s,padding .3s;
 }
+#navbar.scrolled{background:rgba(28,34,48,.97);box-shadow:0 2px 24px rgba(0,0,0,.4);padding:.8rem 3rem}
+.nav-logo{font-family:'Raleway',sans-serif;font-size:1.35rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--white)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.65);transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
 
-/* ═══════════════════════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════════════════════ */
-#navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 3rem;
-    background: rgba(28, 34, 48, 0.0);
-    transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
-}
-#navbar.scrolled {
-    background: rgba(28, 34, 48, 0.97);
-    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
-    padding: 0.8rem 3rem;
-}
-.nav-logo {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.35rem; font-weight: 800; letter-spacing: 0.1em;
-    text-transform: uppercase; text-decoration: none;
-    color: var(--white);
-}
-.nav-logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 2.2rem; list-style: none; }
-.nav-links a {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; text-decoration: none;
-    color: rgba(255,255,255,0.65); transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--accent); }
+/* ══ HERO ═══════════════════════════════════════════════════════ */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1800&q=80');background-size:cover;background-position:center 60%;animation:heroZoom 18s ease-in-out infinite alternate}
+@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,20,32,.55) 0%,rgba(15,20,32,.4) 40%,rgba(15,20,32,.75) 100%)}
+.hero-content{position:relative;z-index:2;max-width:820px;padding:0 2rem}
+.hero-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;border:1px solid rgba(77,184,196,.4);padding:.35rem 1.2rem}
+.hero-title{font-family:'Raleway',sans-serif;font-size:clamp(3.2rem,9vw,6.5rem);font-weight:200;line-height:1;color:var(--white);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem}
+.hero-title strong{font-weight:800;display:block}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.9;margin:1.5rem auto 2.5rem;max-width:540px}
+.hero-sub strong{color:var(--white);font-weight:600}
+.hero-cta{display:inline-block;padding:1rem 2.8rem;background:var(--accent);color:var(--navy);font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .25s,transform .2s;margin-right:1rem}
+.hero-cta:hover{background:#65cdd8;transform:translateY(-1px)}
+.hero-cta.outline{background:transparent;border:2px solid rgba(255,255,255,.4);color:var(--white);margin-right:0}
+.hero-cta.outline:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.3);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;animation:bounce 2.2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-/* ═══════════════════════════════════════════════════════════
-   HERO  — full-screen Athens photo + dark overlay
-═══════════════════════════════════════════════════════════ */
-#hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-.hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background-image: url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1800&q=80');
-    background-size: cover; background-position: center 60%;
-    transform: scale(1.04);
-    animation: heroZoom 18s ease-in-out infinite alternate;
-}
-@keyframes heroZoom { from { transform: scale(1.04); } to { transform: scale(1.12); } }
-.hero-overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg,
-        rgba(15,20,32,0.55) 0%,
-        rgba(15,20,32,0.40) 40%,
-        rgba(15,20,32,0.75) 100%);
-}
-.hero-content {
-    position: relative; z-index: 2;
-    max-width: 820px; padding: 0 2rem;
-}
-.hero-eyebrow {
-    display: inline-block;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.35em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 1.6rem;
-    border: 1px solid rgba(77,184,196,0.4);
-    padding: 0.35rem 1.2rem;
-}
-.hero-title {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(3.2rem, 9vw, 6.5rem);
-    font-weight: 200; line-height: 1;
-    color: var(--white); letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 0.3rem;
-}
-.hero-title strong { font-weight: 800; display: block; }
-.hero-sub {
-    font-size: 1.05rem; font-weight: 300;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.9; margin: 1.5rem auto 2.5rem;
-    max-width: 540px;
-}
-.hero-sub strong { color: var(--white); font-weight: 600; }
-.hero-cta {
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--accent); color: var(--navy);
-    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em;
-    text-transform: uppercase; text-decoration: none;
-    transition: background 0.25s, transform 0.2s;
-    margin-right: 1rem;
-}
-.hero-cta:hover { background: #65cdd8; transform: translateY(-1px); }
-.hero-cta.outline {
-    background: transparent;
-    border: 2px solid rgba(255,255,255,0.4);
-    color: var(--white); margin-right: 0;
-}
-.hero-cta.outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-.hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-    color: rgba(255,255,255,0.3); font-size: 0.62rem; letter-spacing: 0.2em;
-    text-transform: uppercase; animation: bounce 2.2s ease-in-out infinite;
-}
-@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
-.hero-scroll i { font-size: 1rem; }
+/* ══ ABOUT ══════════════════════════════════════════════════════ */
+#about{background:var(--navy-mid);padding:5rem 0}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:0 3rem;align-items:center}
+.about-headline{font-family:'Raleway',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:200;letter-spacing:.06em;text-transform:uppercase;color:var(--white);line-height:1.25}
+.about-headline strong{font-weight:800;color:var(--accent)}
+.about-stats{display:flex;gap:2.5rem;margin-top:2.5rem}
+.stat-n{font-size:2.6rem;font-weight:200;color:var(--accent);line-height:1}
+.stat-l{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:.3rem}
+.about-body p{font-size:.92rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem}
+.about-body p strong{color:var(--off-white);font-weight:600}
 
-/* ═══════════════════════════════════════════════════════════
-   SECTION WRAPPERS
-═══════════════════════════════════════════════════════════ */
-.section-dark  { background: var(--navy); }
-.section-mid   { background: var(--navy-mid); }
-.section-light { background: var(--navy-light); }
+/* ══ SECTION HEADER ════════════════════════════════════════════ */
+#properties{background:var(--navy);padding-bottom:5rem}
+.section-header{text-align:center;padding:5rem 2rem 3.5rem}
+.section-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-title{font-family:'Raleway',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:200;letter-spacing:.08em;text-transform:uppercase;color:var(--white);line-height:1.2}
+.section-title strong{font-weight:800}
+.section-line{width:48px;height:2px;background:var(--accent);margin:1.4rem auto 0}
+.section-sub{max-width:600px;margin:1.2rem auto 0;font-size:.92rem;color:var(--text-dim);line-height:1.8}
 
-.section-header {
-    text-align: center;
-    padding: 5rem 2rem 3.5rem;
-}
-.section-tag {
-    display: inline-block;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 1rem;
-}
-.section-title {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 200; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--white);
-    line-height: 1.2;
-}
-.section-title strong { font-weight: 800; }
-.section-line {
-    width: 48px; height: 2px;
-    background: var(--accent);
-    margin: 1.4rem auto 0;
-}
-.section-sub {
-    max-width: 600px; margin: 1.2rem auto 0;
-    font-size: 0.92rem; color: var(--text-dim); line-height: 1.8;
-}
+/* ══ PROPERTY CARD ══════════════════════════════════════════════ */
+.prop-wrap{max-width:1140px;margin:0 auto 4rem;padding:0 2rem}
+.prop-card{background:var(--navy-mid);border:1px solid var(--border);overflow:hidden}
+.prop-pill{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;padding:.28rem .85rem;background:var(--accent);color:var(--navy)}
+.prop-pill.warm{background:var(--accent2);color:#fff}
+.prop-location-label{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim)}
+.prop-title{font-family:'Raleway',sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:200;letter-spacing:.06em;text-transform:uppercase;color:var(--white);line-height:1.25}
+.prop-title strong{font-weight:800}
+.prop-desc{font-size:.88rem;color:var(--text-dim);line-height:1.85}
+.prop-tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.p-tag{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .75rem;border:1px solid rgba(255,255,255,.12);color:var(--text-dim)}
+.prop-maplink{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-top:auto;transition:color .2s}
+.prop-maplink:hover{color:#65cdd8}
 
-/* ═══════════════════════════════════════════════════════════
-   ABOUT STRIP
-═══════════════════════════════════════════════════════════ */
-#about {
-    background: var(--navy-mid);
-    padding: 5rem 0;
-}
-.about-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 5rem; padding: 0 3rem; align-items: center;
-}
-.about-headline {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-    font-weight: 200; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--white); line-height: 1.25;
-}
-.about-headline strong { font-weight: 800; color: var(--accent); }
-.about-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; }
-.stat-n {
-    font-size: 2.6rem; font-weight: 200;
-    color: var(--accent); line-height: 1;
-    font-family: 'Raleway', sans-serif;
-}
-.stat-l {
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--text-dim); margin-top: 0.3rem;
-}
-.about-body p {
-    font-size: 0.92rem; line-height: 1.9;
-    color: var(--text-dim); margin-bottom: 1rem;
-}
-.about-body p strong { color: var(--off-white); font-weight: 600; }
+/* ══ ELPIDOS ════════════════════════════════════════════════════ */
+.elpidos-grid{display:grid;grid-template-columns:55% 45%}
+.eg-gallery{position:relative;background:#0d1120;overflow:hidden;min-height:460px}
+.eg-gallery .main-img{width:100%;height:460px;object-fit:cover;display:block;transition:opacity .35s}
+.eg-gallery .main-img.fading{opacity:0}
+.g-bar{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,14,24,.85));padding:2rem 1.2rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.g-dots{display:flex;gap:5px;flex-wrap:wrap;max-width:65%}
+.g-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;transition:background .2s,transform .2s;padding:0;flex-shrink:0}
+.g-dot.active{background:var(--accent);transform:scale(1.3)}
+.g-arrows{display:flex;gap:.4rem}
+.g-arrow{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);cursor:pointer;font-size:.85rem;transition:background .2s}
+.g-arrow:hover{background:var(--accent);border-color:var(--accent);color:var(--navy)}
+.g-btn-tl,.g-btn-tr{position:absolute;top:.9rem;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.38rem .85rem;border:none;cursor:pointer;font-family:'Raleway',sans-serif}
+.g-btn-tl{left:.9rem;background:var(--accent2);color:#fff}
+.g-btn-tl:hover{background:#d07040}
+.g-btn-tr{right:.9rem;background:rgba(0,0,0,.5);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2)}
+.g-btn-tr:hover{background:rgba(255,255,255,.15)}
+.g-counter{position:absolute;top:.9rem;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.5);background:rgba(0,0,0,.4);padding:.25rem .6rem}
+.eg-info{padding:2.5rem 2.5rem 2rem;display:flex;flex-direction:column;gap:1rem}
 
-/* ═══════════════════════════════════════════════════════════
-   PROPERTY SECTION
-═══════════════════════════════════════════════════════════ */
-#properties { background: var(--navy); padding-bottom: 6rem; }
+/* ══ KALLITHEA ══════════════════════════════════════════════════ */
+.kallithea-header-area{padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid var(--border)}
+.kall-desc{font-size:.88rem;color:var(--text-dim);line-height:1.85;margin:.8rem 0 1rem;max-width:820px}
+.k-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.k-tabs::-webkit-scrollbar{display:none}
+.k-tab{flex-shrink:0;padding:1.1rem 1.6rem;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;white-space:nowrap}
+.k-tab:hover{color:var(--off-white)}
+.k-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.k-panel{display:none}
+.k-panel.active{display:grid;grid-template-columns:55% 45%}
+.kp-gallery{position:relative;background:#0d1120;min-height:380px;cursor:zoom-in}
+.kp-gallery .main-img{width:100%;height:380px;object-fit:cover;display:block;transition:opacity .3s}
+.kp-gallery .main-img.fading{opacity:0}
+.kp-info{padding:2.2rem 2.2rem 2rem;display:flex;flex-direction:column;gap:.9rem}
+.kp-sublabel{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent2)}
+.thumb-strip{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(8,12,22,.9));padding:1.5rem .8rem .7rem;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
+.thumb-strip::-webkit-scrollbar{display:none}
+.t-thumb{flex-shrink:0;width:48px;height:36px;object-fit:cover;cursor:pointer;opacity:.45;border:1.5px solid transparent;transition:opacity .2s,border-color .2s}
+.t-thumb.active{opacity:1;border-color:var(--accent)}
+.t-thumb:hover{opacity:.85}
+.kp-count{position:absolute;top:.8rem;right:.8rem;font-size:.6rem;letter-spacing:.1em;color:rgba(255,255,255,.55);background:rgba(0,0,0,.5);padding:.22rem .55rem}
+.kp-expand{position:absolute;top:.8rem;left:.8rem;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);padding:.25rem .6rem;cursor:pointer;font-family:'Raleway',sans-serif}
+.kp-expand:hover{background:rgba(255,255,255,.12);color:#fff}
+/* video button for kallithea panels */
+.kp-video-btn{position:absolute;bottom:3.8rem;right:.8rem;font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--accent2);color:#fff;border:none;padding:.35rem .75rem;cursor:pointer;font-family:'Raleway',sans-serif;z-index:10}
+.kp-video-btn:hover{background:#d07040}
 
-.prop-wrap {
-    max-width: 1140px; margin: 0 auto 4rem;
-    padding: 0 2rem;
-}
-.prop-card {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    overflow: hidden;
-}
+/* ══ TESTIMONIALS ═══════════════════════════════════════════════ */
+#testimonials{background:var(--navy-mid);padding:0 0 6rem}
+.tgrid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;padding:0 2rem}
+.tcard{background:var(--navy-light);border:1px solid var(--border);padding:2.2rem 1.8rem 1.8rem;position:relative;transition:border-color .25s}
+.tcard:hover{border-color:rgba(77,184,196,.3)}
+.tcard::before{content:'\201C';position:absolute;top:.8rem;left:1.4rem;font-family:'Source Serif 4',serif;font-size:4.5rem;line-height:1;color:rgba(77,184,196,.12);pointer-events:none}
+.tcard p{font-size:.88rem;line-height:1.85;color:var(--text-dim);padding-top:1.2rem;margin-bottom:1.4rem}
+.tcard-name{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
 
-/* ── tag pill ── */
-.prop-pill {
-    display: inline-block;
-    font-size: 0.6rem; font-weight: 800; letter-spacing: 0.22em;
-    text-transform: uppercase; padding: 0.28rem 0.85rem;
-    background: var(--accent); color: var(--navy);
-}
-.prop-pill.warm { background: var(--accent2); color: #fff; }
+/* ══ EXPLORE ════════════════════════════════════════════════════ */
+#explore{background:var(--navy-light);padding:6rem 2rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.explore-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2.5rem}
+.e-btn{padding:.9rem 2.2rem;font-family:'Raleway',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.e-btn.primary{background:var(--accent);color:var(--navy)}
+.e-btn.primary:hover{background:#65cdd8}
+.e-btn.ghost{border:2px solid rgba(255,255,255,.2);color:var(--off-white)}
+.e-btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 
-/* ─── ELPIDOS layout ─── */
-.elpidos-grid {
-    display: grid; grid-template-columns: 55% 45%;
-}
-.eg-gallery {
-    position: relative; background: #0d1120; overflow: hidden;
-    min-height: 460px;
-}
-.eg-gallery .main-img {
-    width: 100%; height: 460px;
-    object-fit: cover; display: block;
-    transition: opacity 0.35s;
-}
-.eg-gallery .main-img.fading { opacity: 0; }
+/* ══ FOOTER ═════════════════════════════════════════════════════ */
+footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;max-width:1140px;margin:0 auto}
+.f-logo{font-family:'Raleway',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--white)}
+.f-logo span{color:var(--accent)}
+.f-tagline{font-size:.82rem;color:var(--text-dim);line-height:1.75;margin-top:.9rem}
+.f-head{font-size:.62rem;font-weight:800;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.1rem;display:block}
+.f-contact p{font-size:.84rem;color:var(--text-dim);line-height:1.85}
+.f-contact a{color:var(--accent);text-decoration:none}
+.f-contact a:hover{color:#65cdd8}
+.f-contact strong{color:var(--off-white);font-weight:400}
+.f-social a{display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:var(--text-dim);text-decoration:none;transition:color .2s;margin-bottom:.6rem}
+.f-social a:hover{color:var(--accent)}
+.footer-bar{background:#111620;border-top:1px solid rgba(255,255,255,.05);padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;margin-top:3rem}
+.footer-bar p{font-size:.68rem;letter-spacing:.1em;color:rgba(255,255,255,.2)}
 
-/* gallery overlay bar */
-.g-bar {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(10,14,24,0.85));
-    padding: 2rem 1.2rem 1rem;
-    display: flex; align-items: center; justify-content: space-between;
-}
-.g-dots { display: flex; gap: 5px; flex-wrap: wrap; max-width: 60%; }
-.g-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: rgba(255,255,255,0.25); border: none; cursor: pointer;
-    transition: background 0.2s, transform 0.2s; padding: 0; flex-shrink: 0;
-}
-.g-dot.active { background: var(--accent); transform: scale(1.3); }
-.g-arrows { display: flex; gap: 0.4rem; }
-.g-arrow {
-    width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white); cursor: pointer; font-size: 0.85rem;
-    transition: background 0.2s; flex-shrink: 0;
-}
-.g-arrow:hover { background: var(--accent); border-color: var(--accent); color: var(--navy); }
+/* ══ LIGHTBOX ═══════════════════════════════════════════════════ */
+#lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,8,16,.97);align-items:center;justify-content:center;flex-direction:column}
+#lightbox.open{display:flex}
+#lb-img{max-width:90vw;max-height:82vh;object-fit:contain;display:block}
+#lb-video{max-width:90vw;max-height:82vh;display:none}
+.lb-close{position:fixed;top:1.4rem;right:2rem;background:none;border:none;color:rgba(255,255,255,.55);font-size:2.2rem;cursor:pointer;line-height:1;transition:color .2s}
+.lb-close:hover{color:#fff}
+.lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--white);font-size:1.2rem;cursor:pointer;transition:background .2s}
+.lb-prev{left:1.5rem}.lb-next{right:1.5rem}
+.lb-prev:hover,.lb-next:hover{background:var(--accent);border-color:var(--accent);color:var(--navy)}
+.lb-info{margin-top:1rem;font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.35);text-align:center}
 
-/* top-left / top-right gallery buttons */
-.g-btn-tl, .g-btn-tr {
-    position: absolute; top: 0.9rem;
-    font-size: 0.6rem; font-weight: 800; letter-spacing: 0.14em;
-    text-transform: uppercase; padding: 0.38rem 0.85rem;
-    border: none; cursor: pointer; font-family: 'Raleway', sans-serif;
-}
-.g-btn-tl { left: 0.9rem; background: var(--accent2); color: #fff; }
-.g-btn-tl:hover { background: #d07040; }
-.g-btn-tr { right: 0.9rem; background: rgba(0,0,0,0.5); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); }
-.g-btn-tr:hover { background: rgba(255,255,255,0.15); }
+/* ══ LOADING OVERLAY ════════════════════════════════════════════ */
+#loading-overlay{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s}
+#loading-overlay.hidden{opacity:0;pointer-events:none}
+.loader-logo{font-family:'Raleway',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white)}
+.loader-logo span{color:var(--accent)}
+.loader-bar{width:200px;height:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.loader-bar::after{content:'';display:block;height:100%;width:40%;background:var(--accent);animation:loading 1.2s ease-in-out infinite}
+@keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.loader-text{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim)}
 
-/* counter badge */
-.g-counter {
-    position: absolute; top: 0.9rem; left: 50%; transform: translateX(-50%);
-    font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5);
-    background: rgba(0,0,0,0.4); padding: 0.25rem 0.6rem;
+/* ══ RESPONSIVE ═════════════════════════════════════════════════ */
+@media(max-width:900px){
+    .about-inner{grid-template-columns:1fr;gap:2.5rem}
+    .elpidos-grid,.k-panel.active{grid-template-columns:1fr}
+    .eg-gallery .main-img{height:300px}
+    .kp-gallery .main-img{height:260px}
 }
-
-/* property info panel */
-.eg-info {
-    padding: 2.5rem 2.5rem 2rem;
-    display: flex; flex-direction: column; gap: 1rem;
-}
-.prop-location-label {
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--text-dim);
-}
-.prop-title {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-    font-weight: 200; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--white);
-    line-height: 1.25;
-}
-.prop-title strong { font-weight: 800; }
-.prop-desc {
-    font-size: 0.88rem; color: var(--text-dim); line-height: 1.85;
-}
-.prop-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-.p-tag {
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; padding: 0.28rem 0.75rem;
-    border: 1px solid rgba(255,255,255,0.12); color: var(--text-dim);
-}
-.prop-maplink {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent);
-    text-decoration: none; margin-top: auto;
-    transition: color 0.2s;
-}
-.prop-maplink:hover { color: #65cdd8; }
-.prop-maplink i { font-size: 0.8rem; }
-
-/* ─── KALLITHEA layout ─── */
-.kallithea-header-area {
-    padding: 2.5rem 2.5rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-}
-.kall-desc {
-    font-size: 0.88rem; color: var(--text-dim); line-height: 1.85;
-    margin: 0.8rem 0 1rem; max-width: 820px;
-}
-
-/* Tabs */
-.k-tabs {
-    display: flex; border-bottom: 1px solid var(--border);
-    overflow-x: auto; scrollbar-width: none;
-}
-.k-tabs::-webkit-scrollbar { display: none; }
-.k-tab {
-    flex-shrink: 0;
-    padding: 1.1rem 1.6rem;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--text-dim);
-    background: none; border: none; cursor: pointer;
-    border-bottom: 2px solid transparent; margin-bottom: -1px;
-    transition: color 0.2s, border-color 0.2s;
-    white-space: nowrap;
-}
-.k-tab:hover { color: var(--off-white); }
-.k-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-/* Tab panels */
-.k-panel { display: none; }
-.k-panel.active { display: grid; grid-template-columns: 55% 45%; }
-.kp-gallery {
-    position: relative; background: #0d1120; min-height: 380px;
-    cursor: zoom-in;
-}
-.kp-gallery .main-img {
-    width: 100%; height: 380px; object-fit: cover; display: block;
-    transition: opacity 0.3s;
-}
-.kp-gallery .main-img.fading { opacity: 0; }
-.kp-info { padding: 2.2rem 2.2rem 2rem; display: flex; flex-direction: column; gap: 0.9rem; }
-.kp-sublabel {
-    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--accent2);
-}
-
-/* Thumbnail strip */
-.thumb-strip {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(8,12,22,0.9));
-    padding: 1.5rem 0.8rem 0.7rem;
-    display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none;
-}
-.thumb-strip::-webkit-scrollbar { display: none; }
-.t-thumb {
-    flex-shrink: 0; width: 48px; height: 36px;
-    object-fit: cover; cursor: pointer; opacity: 0.45;
-    border: 1.5px solid transparent;
-    transition: opacity 0.2s, border-color 0.2s;
-}
-.t-thumb.active { opacity: 1; border-color: var(--accent); }
-.t-thumb:hover { opacity: 0.85; }
-
-/* expand / count overlay */
-.kp-count {
-    position: absolute; top: 0.8rem; right: 0.8rem;
-    font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.55);
-    background: rgba(0,0,0,0.5); padding: 0.22rem 0.55rem;
-}
-.kp-expand {
-    position: absolute; top: 0.8rem; left: 0.8rem;
-    font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em;
-    text-transform: uppercase; color: rgba(255,255,255,0.65);
-    background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15);
-    padding: 0.25rem 0.6rem; cursor: pointer;
-    font-family: 'Raleway', sans-serif;
-}
-.kp-expand:hover { background: rgba(255,255,255,0.12); color: #fff; }
-
-/* ═══════════════════════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════════════════════ */
-#testimonials { background: var(--navy-mid); padding: 0 0 6rem; }
-.tgrid {
-    max-width: 1140px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 1.5rem; padding: 0 2rem;
-}
-.tcard {
-    background: var(--navy-light);
-    border: 1px solid var(--border);
-    padding: 2.2rem 1.8rem 1.8rem;
-    position: relative;
-    transition: border-color 0.25s;
-}
-.tcard:hover { border-color: rgba(77,184,196,0.3); }
-.tcard::before {
-    content: '\201C';
-    position: absolute; top: 0.8rem; left: 1.4rem;
-    font-family: 'Source Serif 4', serif;
-    font-size: 4.5rem; line-height: 1;
-    color: rgba(77,184,196,0.12);
-    pointer-events: none;
-}
-.tcard p {
-    font-size: 0.88rem; line-height: 1.85;
-    color: var(--text-dim); padding-top: 1.2rem;
-    margin-bottom: 1.4rem;
-}
-.tcard-name {
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--accent);
-}
-
-/* ═══════════════════════════════════════════════════════════
-   EXPLORE CTA
-═══════════════════════════════════════════════════════════ */
-#explore {
-    background: var(--navy-light);
-    padding: 6rem 2rem;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-.explore-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2.5rem; }
-.e-btn {
-    padding: 0.9rem 2.2rem;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.2em;
-    text-transform: uppercase; text-decoration: none; transition: all 0.25s;
-}
-.e-btn.primary { background: var(--accent); color: var(--navy); }
-.e-btn.primary:hover { background: #65cdd8; }
-.e-btn.ghost { border: 2px solid rgba(255,255,255,0.2); color: var(--off-white); }
-.e-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ═══════════════════════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════════════════════ */
-footer {
-    background: #111620;
-    padding: 4rem 3rem 0;
-    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 3rem; max-width: 1140px; margin: 0 auto;
-}
-.f-logo {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.25rem; font-weight: 800; letter-spacing: 0.1em;
-    text-transform: uppercase; text-decoration: none; color: var(--white);
-}
-.f-logo span { color: var(--accent); }
-.f-tagline {
-    font-size: 0.82rem; color: var(--text-dim); line-height: 1.75;
-    margin-top: 0.9rem;
-}
-.f-head {
-    font-size: 0.62rem; font-weight: 800; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 1.1rem; display: block;
-}
-.f-contact p { font-size: 0.84rem; color: var(--text-dim); line-height: 1.85; }
-.f-contact a { color: var(--accent); text-decoration: none; }
-.f-contact a:hover { color: #65cdd8; }
-.f-contact strong { color: var(--off-white); font-weight: 600; }
-.f-social a {
-    display: flex; align-items: center; gap: 0.7rem;
-    font-size: 0.82rem; color: var(--text-dim); text-decoration: none;
-    transition: color 0.2s; margin-bottom: 0.6rem;
-}
-.f-social a:hover { color: var(--accent); }
-.f-social i { font-size: 1rem; }
-.footer-bar {
-    background: #111620;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 1.4rem 3rem;
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 3rem;
-}
-.footer-bar p { font-size: 0.68rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); }
-
-/* ═══════════════════════════════════════════════════════════
-   LIGHTBOX
-═══════════════════════════════════════════════════════════ */
-#lightbox {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(5, 8, 16, 0.97);
-    align-items: center; justify-content: center;
-    flex-direction: column;
-}
-#lightbox.open { display: flex; }
-.lb-media-wrap {
-    position: relative;
-    max-width: 92vw; max-height: 85vh;
-    display: flex; align-items: center; justify-content: center;
-}
-#lb-img { max-width: 90vw; max-height: 82vh; object-fit: contain; display: block; }
-#lb-video { max-width: 90vw; max-height: 82vh; display: none; }
-.lb-close {
-    position: fixed; top: 1.4rem; right: 2rem;
-    background: none; border: none; color: rgba(255,255,255,0.55);
-    font-size: 2.2rem; cursor: pointer; line-height: 1;
-    transition: color 0.2s;
-}
-.lb-close:hover { color: #fff; }
-.lb-prev, .lb-next {
-    position: fixed; top: 50%; transform: translateY(-50%);
-    width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    color: var(--white); font-size: 1.2rem; cursor: pointer; transition: background 0.2s;
-}
-.lb-prev { left: 1.5rem; }
-.lb-next { right: 1.5rem; }
-.lb-prev:hover, .lb-next:hover { background: var(--accent); border-color: var(--accent); color: var(--navy); }
-.lb-info {
-    margin-top: 1rem;
-    font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
-    text-align: center;
-}
-
-/* ═══════════════════════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════════════════════ */
-@media (max-width: 900px) {
-    .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .elpidos-grid, .k-panel.active { grid-template-columns: 1fr; }
-    .eg-gallery .main-img { height: 300px; }
-    .kp-gallery .main-img { height: 260px; }
-}
-@media (max-width: 700px) {
-    #navbar { padding: 1rem 1.4rem; }
-    .nav-links { display: none; }
-    footer { grid-template-columns: 1fr; padding: 3rem 1.5rem 0; }
-    .footer-bar { flex-direction: column; gap: 0.4rem; text-align: center; padding: 1rem 1.5rem; }
-    .prop-wrap { padding: 0 1rem; }
-    .about-inner { padding: 0 1.5rem; }
-    .kallithea-header-area, .eg-info, .kp-info { padding: 1.8rem 1.5rem; }
+@media(max-width:700px){
+    #navbar{padding:1rem 1.4rem}
+    .nav-links{display:none}
+    footer{grid-template-columns:1fr;padding:2.5rem 1.5rem 0}
+    .footer-bar{flex-direction:column;gap:.4rem;text-align:center;padding:1rem 1.5rem}
+    .prop-wrap{padding:0 1rem}
+    .about-inner{padding:0 1.5rem}
+    .kallithea-header-area,.eg-info,.kp-info{padding:1.8rem 1.5rem}
 }
     </style>
 </head>
 <body>
 
-<!-- ══════════════ NAV ══════════════ -->
+<!-- LOADING OVERLAY -->
+<div id="loading-overlay">
+    <div class="loader-logo">Rent<span>Athens</span></div>
+    <div class="loader-bar"></div>
+    <div class="loader-text">Loading properties…</div>
+</div>
+
+<!-- NAV -->
 <nav id="navbar">
     <a href="#" class="nav-logo">Rent<span>Athens</span></a>
     <ul class="nav-links">
@@ -586,43 +227,29 @@ footer {
     </ul>
 </nav>
 
-<!-- ══════════════ HERO ══════════════ -->
+<!-- HERO -->
 <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <span class="hero-eyebrow">Athens, Greece · Since 2018</span>
         <h1 class="hero-title">Rent<strong>Athens</strong></h1>
-        <p class="hero-sub">
-            Find <strong>your ideal place</strong>, fast and easy.<br>
-            Quality rooms &amp; studios in the heart of Athens.
-        </p>
+        <p class="hero-sub">Find <strong>your ideal place</strong>, fast and easy.<br>Quality rooms &amp; studios in the heart of Athens.</p>
         <a href="#properties" class="hero-cta">View Properties</a>
         <a href="#footer-area" class="hero-cta outline">Contact Us</a>
     </div>
-    <div class="hero-scroll">
-        <span>Scroll</span><i class="fa-solid fa-chevron-down"></i>
-    </div>
+    <div class="hero-scroll"><span>Scroll</span><i class="fa-solid fa-chevron-down"></i></div>
 </section>
 
-<!-- ══════════════ ABOUT ══════════════ -->
+<!-- ABOUT -->
 <section id="about">
     <div class="about-inner">
         <div>
             <h2 class="about-headline">Helping you find<br><strong>home</strong> since 2018</h2>
             <div class="about-stats">
-                <div>
-                    <div class="stat-n">7+</div>
-                    <div class="stat-l">Years active</div>
-                </div>
-                <div>
-                    <div class="stat-n">2</div>
-                    <div class="stat-l">Locations</div>
-                </div>
-                <div>
-                    <div class="stat-n">★★★★★</div>
-                    <div class="stat-l">Tenant reviews</div>
-                </div>
+                <div><div class="stat-n">7+</div><div class="stat-l">Years active</div></div>
+                <div><div class="stat-n">2</div><div class="stat-l">Locations</div></div>
+                <div><div class="stat-n">★★★★★</div><div class="stat-l">Tenant reviews</div></div>
             </div>
         </div>
         <div class="about-body">
@@ -632,8 +259,8 @@ footer {
     </div>
 </section>
 
-<!-- ══════════════ PROPERTIES ══════════════ -->
-<section id="properties" class="section-dark">
+<!-- PROPERTIES -->
+<section id="properties">
     <div class="section-header">
         <span class="section-tag">Where you'll live</span>
         <h2 class="section-title">Our <strong>Properties</strong></h2>
@@ -641,17 +268,15 @@ footer {
         <p class="section-sub">Check out your preferable location</p>
     </div>
 
-    <!-- ─────────── ELPIDOS ─────────── -->
+    <!-- ═══ ELPIDOS ═══ -->
     <div class="prop-wrap">
         <div class="prop-card">
             <div class="elpidos-grid">
-
-                <!-- Gallery -->
                 <div class="eg-gallery" id="eg-gallery">
                     <img class="main-img" id="eg-main" src="images/pic02.jpg" alt="Elpidos apartment" />
-                    <button class="g-btn-tl" onclick="openElpidosVideo()">&#9654; Video Tour</button>
-                    <button class="g-btn-tr" onclick="openLightbox('elpidos', egIdx)">&#10530; Expand</button>
-                    <div class="g-counter" id="eg-counter">1 / 1</div>
+                    <button class="g-btn-tl" id="eg-video-btn" onclick="openVideo('images/Elpidos/tour.mp4','Elpidos – Video Tour')" style="display:none">&#9654; Video Tour</button>
+                    <button class="g-btn-tr" onclick="openLightbox('elpidos',egIdx)">&#10530; Expand</button>
+                    <div class="g-counter" id="eg-counter">Loading…</div>
                     <div class="g-bar">
                         <div class="g-dots" id="eg-dots"></div>
                         <div class="g-arrows">
@@ -660,17 +285,11 @@ footer {
                         </div>
                     </div>
                 </div>
-
-                <!-- Info -->
                 <div class="eg-info">
                     <span class="prop-pill">Shared Apartment</span>
-                    <p class="prop-location-label">Athens City Centre</p>
+                    <p class="prop-location-label" style="margin-top:.5rem">Athens City Centre</p>
                     <h3 class="prop-title"><strong>Elpidos</strong> Street</h3>
-                    <p class="prop-desc">
-                        A shared apartment of four rooms on the second floor of a classic Athenian building.
-                        Only <strong>4 minutes' walk</strong> from the Green metro line and <strong>3 minutes' walk</strong> from AUEB
-                        (Athens University of Economics &amp; Business). Modern interiors, great natural light, vibrant neighbourhood.
-                    </p>
+                    <p class="prop-desc">A shared apartment of four rooms on the second floor of a classic Athenian building. Only <strong>4 minutes' walk</strong> from the Green metro line and <strong>3 minutes' walk</strong> from AUEB. Modern interiors, great natural light, vibrant neighbourhood.</p>
                     <div class="prop-tags">
                         <span class="p-tag">4 Rooms</span>
                         <span class="p-tag">2nd Floor</span>
@@ -678,39 +297,28 @@ footer {
                         <span class="p-tag">3 min · AUEB</span>
                         <span class="p-tag">Renovated</span>
                     </div>
-                    <a class="prop-maplink" href="https://goo.gl/maps/ubNzF62PGYFniL6R6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <a class="prop-maplink" href="https://goo.gl/maps/ubNzF62PGYFniL6R6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
         </div>
-    </div><!-- /elpidos wrap -->
+    </div>
 
-
-    <!-- ─────────── KALLITHEA ─────────── -->
+    <!-- ═══ KALLITHEA ═══ -->
     <div class="prop-wrap">
         <div class="prop-card">
-
-            <!-- Header -->
             <div class="kallithea-header-area">
                 <span class="prop-pill warm">Multiple Units</span>
-                <p class="prop-location-label" style="margin-top:1rem;">Kallithea, Athens</p>
+                <p class="prop-location-label" style="margin-top:1rem">Kallithea, Athens</p>
                 <h3 class="prop-title"><strong>Spartis</strong> Street, Kallithea</h3>
-                <p class="kall-desc">
-                    A private multi-floor building offering a range of unit types — ground-floor studios, a first-floor shared apartment and upper-floor studios.
-                    Very close to Thiseos Avenue, well-linked with the city centre, Piraeus, and the coast.
-                    Ideal for <strong>Teleperformance</strong> employees and students from <strong>Panteion</strong> and <strong>Piraeus University</strong>.
-                </p>
-                <div class="prop-tags" style="margin-bottom:0.5rem;">
+                <p class="kall-desc">A private multi-floor building offering a range of unit types — ground-floor studios, a first-floor shared apartment and upper-floor studios. Very close to Thiseos Avenue, well-linked with the city centre, Piraeus, and the coast. Ideal for <strong>Teleperformance</strong> employees and students from <strong>Panteion</strong> and <strong>Piraeus University</strong>.</p>
+                <div class="prop-tags" style="margin-bottom:.5rem">
                     <span class="p-tag">Studios &amp; Rooms</span>
                     <span class="p-tag">Near Teleperformance</span>
                     <span class="p-tag">Panteion · Piraeus Univ.</span>
                     <span class="p-tag">Close to Coast</span>
                 </div>
             </div>
-
-            <!-- Tabs -->
-            <div class="k-tabs" id="k-tabs">
+            <div class="k-tabs">
                 <button class="k-tab active" onclick="showKTab(0)">Ground Floor A</button>
                 <button class="k-tab"        onclick="showKTab(1)">Ground Floor B</button>
                 <button class="k-tab"        onclick="showKTab(2)">1st Floor – 4 Rooms</button>
@@ -718,111 +326,96 @@ footer {
                 <button class="k-tab"        onclick="showKTab(4)">Upper Studio B</button>
             </div>
 
-            <!-- ── Panel 0: Kallithea0a ── -->
+            <!-- Panel 0 -->
             <div class="k-panel active" id="kpanel-0">
-                <div class="kp-gallery" id="kgal-0" onclick="openLightbox(0, kIdx[0])">
-                    <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A" />
+                <div class="kp-gallery" id="kgal-0" onclick="openLightbox(0,kIdx[0])">
+                    <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(0,kIdx[0])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-0">– / –</div>
+                    <div class="kp-count" id="kcnt-0">Loading…</div>
                     <div class="thumb-strip" id="kth-0" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
                     <span class="prop-pill warm">Studio</span>
                     <span class="kp-sublabel">Ground Floor · Unit A</span>
-                    <h4 class="prop-title" style="font-size:1.35rem;">Ground Floor<br><strong>Studio A</strong></h4>
+                    <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio A</strong></h4>
                     <p class="prop-desc">A bright, self-contained studio on the ground floor. Fully furnished with all essentials. Perfect for a professional or student wanting private, comfortable accommodation.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
 
-            <!-- ── Panel 1: Kallithea0b ── -->
+            <!-- Panel 1 -->
             <div class="k-panel" id="kpanel-1">
-                <div class="kp-gallery" id="kgal-1" onclick="openLightbox(1, kIdx[1])">
-                    <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B" />
+                <div class="kp-gallery" id="kgal-1" onclick="openLightbox(1,kIdx[1])">
+                    <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(1,kIdx[1])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-1">– / –</div>
+                    <div class="kp-count" id="kcnt-1">Loading…</div>
                     <div class="thumb-strip" id="kth-1" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
                     <span class="prop-pill warm">Studio</span>
                     <span class="kp-sublabel">Ground Floor · Unit B</span>
-                    <h4 class="prop-title" style="font-size:1.35rem;">Ground Floor<br><strong>Studio B</strong></h4>
+                    <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">Another well-appointed ground-floor studio. Cosy and private, with natural light and modern furnishings. Great transport connections right on the doorstep.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
 
-            <!-- ── Panel 2: Kallithea1 ── -->
+            <!-- Panel 2 -->
             <div class="k-panel" id="kpanel-2">
-                <div class="kp-gallery" id="kgal-2" onclick="openLightbox(2, kIdx[2])">
-                    <img class="main-img" id="km-2" src="images/Kallithea1/1.jpg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms" />
+                <div class="kp-gallery" id="kgal-2" onclick="openLightbox(2,kIdx[2])">
+                    <img class="main-img" id="km-2" src="images/Kallithea1/1.jpg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(2,kIdx[2])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-2">– / –</div>
+                    <div class="kp-count" id="kcnt-2">Loading…</div>
                     <div class="thumb-strip" id="kth-2" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
                     <span class="prop-pill">Shared Apartment</span>
                     <span class="kp-sublabel">1st Floor · 4 Rooms</span>
-                    <h4 class="prop-title" style="font-size:1.35rem;">First Floor<br><strong>4-Room Apartment</strong></h4>
+                    <h4 class="prop-title" style="font-size:1.35rem">First Floor<br><strong>4-Room Apartment</strong></h4>
                     <p class="prop-desc">A spacious shared apartment with four individual rooms on the first floor. Ideal for students or working professionals who enjoy communal living while keeping their own private space.</p>
-                    <div class="prop-tags">
-                        <span class="p-tag">4 Private Rooms</span>
-                        <span class="p-tag">Shared Kitchen &amp; Bath</span>
-                    </div>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <div class="prop-tags"><span class="p-tag">4 Private Rooms</span><span class="p-tag">Shared Kitchen &amp; Bath</span></div>
+                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
 
-            <!-- ── Panel 3: Kallithea2a ── -->
+            <!-- Panel 3 -->
             <div class="k-panel" id="kpanel-3">
-                <div class="kp-gallery" id="kgal-3" onclick="openLightbox(3, kIdx[3])">
-                    <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A" />
+                <div class="kp-gallery" id="kgal-3" onclick="openLightbox(3,kIdx[3])">
+                    <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(3,kIdx[3])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-3">– / –</div>
+                    <div class="kp-count" id="kcnt-3">Loading…</div>
                     <div class="thumb-strip" id="kth-3" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
                     <span class="prop-pill warm">Studio</span>
                     <span class="kp-sublabel">Upper Floor · Unit A</span>
-                    <h4 class="prop-title" style="font-size:1.35rem;">Upper Floor<br><strong>Studio A</strong></h4>
+                    <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio A</strong></h4>
                     <p class="prop-desc">A bright, fully self-contained studio on the upper floor. Airy with great views, modern finishes throughout. Perfect for someone who values their own space and independence.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
 
-            <!-- ── Panel 4: Kallithea2b ── -->
+            <!-- Panel 4 -->
             <div class="k-panel" id="kpanel-4">
-                <div class="kp-gallery" id="kgal-4" onclick="openLightbox(4, kIdx[4])">
-                    <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B" />
+                <div class="kp-gallery" id="kgal-4" onclick="openLightbox(4,kIdx[4])">
+                    <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(4,kIdx[4])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-4">– / –</div>
+                    <div class="kp-count" id="kcnt-4">Loading…</div>
                     <div class="thumb-strip" id="kth-4" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
                     <span class="prop-pill warm">Studio</span>
                     <span class="kp-sublabel">Upper Floor · Unit B</span>
-                    <h4 class="prop-title" style="font-size:1.35rem;">Upper Floor<br><strong>Studio B</strong></h4>
+                    <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">The second upper-floor studio — equally bright and well-finished. A private, self-contained home with great connectivity to the city centre and the coast.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank">
-                        <i class="fa-solid fa-location-dot"></i> View on Google Maps
-                    </a>
+                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
-
         </div>
-    </div><!-- /kallithea wrap -->
+    </div>
 </section>
 
-
-<!-- ══════════════ TESTIMONIALS ══════════════ -->
+<!-- TESTIMONIALS -->
 <section id="testimonials">
     <div class="section-header">
         <span class="section-tag">What tenants say</span>
@@ -831,72 +424,44 @@ footer {
         <p class="section-sub">Recommendations from people who stayed in our apartments</p>
     </div>
     <div class="tgrid">
-        <div class="tcard">
-            <p>I am leaving, thank you for everything — you are the best house owner I've ever had. Take care of yourself and if you ever come to Turkey don't hesitate to write 😊💙✨🥰</p>
-            <div class="tcard-name">Melis · Turkey</div>
-        </div>
-        <div class="tcard">
-            <p>Thank you very much — I enjoyed the place and you were very kind and helpful all the time!</p>
-            <div class="tcard-name">Julia · Germany</div>
-        </div>
-        <div class="tcard">
-            <p>I recommend Elpidos! The apartment is modern and clean, very well located. It was a pleasure to have such a kind owner!</p>
-            <div class="tcard-name">Sarah · France</div>
-        </div>
-        <div class="tcard">
-            <p>Thank you very much for letting me stay and helping out all the time! 🙂</p>
-            <div class="tcard-name">Hanne · Germany</div>
-        </div>
-        <div class="tcard">
-            <p>The owner is the nicest person, very helpful in every way possible. The apartment is beautiful and very well located. I highly recommend!! 🌸💗</p>
-            <div class="tcard-name">Margot · Slovakia</div>
-        </div>
-        <div class="tcard">
-            <p>I had a really nice experience living in Elpidos. The apartment is in really good condition and every time I needed something Eriola was always really nice and helpful.</p>
-            <div class="tcard-name">Beatriz · Portugal</div>
-        </div>
-        <div class="tcard">
-            <p>Ever since the beginning Eriola was very informative and transparent. If I ever needed help with anything, she was very quick to help and make things as convenient as possible.</p>
-            <div class="tcard-name">Teemu · Finland</div>
-        </div>
+        <div class="tcard"><p>I am leaving, thank you for everything — you are the best house owner I've ever had. Take care of yourself and if you ever come to Turkey don't hesitate to write 😊💙✨🥰</p><div class="tcard-name">Melis · Turkey</div></div>
+        <div class="tcard"><p>Thank you very much — I enjoyed the place and you were very kind and helpful all the time!</p><div class="tcard-name">Julia · Germany</div></div>
+        <div class="tcard"><p>I recommend Elpidos! The apartment is modern and clean, very well located. It was a pleasure to have such a kind owner!</p><div class="tcard-name">Sarah · France</div></div>
+        <div class="tcard"><p>Thank you very much for letting me stay and helping out all the time! 🙂</p><div class="tcard-name">Hanne · Germany</div></div>
+        <div class="tcard"><p>The owner is the nicest person, very helpful in every way possible. The apartment is beautiful and very well located. I highly recommend!! 🌸💗</p><div class="tcard-name">Margot · Slovakia</div></div>
+        <div class="tcard"><p>I had a really nice experience living in Elpidos. The apartment is in really good condition and every time I needed something Eriola was always really nice and helpful.</p><div class="tcard-name">Beatriz · Portugal</div></div>
+        <div class="tcard"><p>Ever since the beginning Eriola was very informative and transparent. If I ever needed help with anything, she was very quick to help and make things as convenient as possible.</p><div class="tcard-name">Teemu · Finland</div></div>
     </div>
 </section>
 
-
-<!-- ══════════════ EXPLORE ══════════════ -->
+<!-- EXPLORE -->
 <section id="explore">
-    <div class="section-header" style="padding-bottom:0;">
+    <div class="section-header" style="padding-bottom:0">
         <span class="section-tag">While you're here</span>
         <h2 class="section-title">Ready for <strong>Adventure?</strong></h2>
         <div class="section-line"></div>
         <p class="section-sub">Don't forget your suncream! You're living in one of the world's greatest cities.</p>
     </div>
-    <div class="explore-btns">
+    <div class="explore-btns" style="padding:0 2rem 2rem">
         <a href="https://www.viator.com/Athens-tourism/d496-r1827186449-s41898901?mcid=33953" target="_blank" class="e-btn primary">Explore Athens</a>
         <a href="https://www.visitgreece.gr/" target="_blank" class="e-btn ghost">Explore Greece</a>
     </div>
 </section>
 
-
-<!-- ══════════════ FOOTER ══════════════ -->
-<div id="footer-area" style="background:#111620;">
+<!-- FOOTER -->
+<div id="footer-area" style="background:#111620">
     <footer>
         <div>
             <a href="#" class="f-logo">Rent<span>Athens</span></a>
-            <p class="f-tagline">Quality rooms and studios in Athens since 2018.<br>Carefully managed, always personal.</p>
+            <p class="f-tagline">Quality rooms and studios in Athens since 2018. Carefully managed, always personal.</p>
         </div>
         <div class="f-contact">
             <span class="f-head">Contact</span>
-            <p>
-                <strong>Eriola Impersimi</strong><br>
-                WhatsApp: <a href="https://wa.me/306974340718">+30 697 434 0718</a><br>
-            </p>
+            <p><strong>Eriola Impersimi</strong><br>WhatsApp: <a href="https://wa.me/306974340718">+30 697 434 0718</a></p>
         </div>
         <div class="f-social">
             <span class="f-head">Connect</span>
-            <a href="https://www.facebook.com/eriimpersimi/" target="_blank">
-                <i class="fa-brands fa-facebook-f"></i> Facebook
-            </a>
+            <a href="https://www.facebook.com/eriimpersimi/" target="_blank"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
         </div>
     </footer>
     <div class="footer-bar">
@@ -905,77 +470,111 @@ footer {
     </div>
 </div>
 
-
-<!-- ══════════════ LIGHTBOX ══════════════ -->
+<!-- LIGHTBOX -->
 <div id="lightbox">
     <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
-    <div class="lb-media-wrap">
-        <img id="lb-img" src="" alt="" />
-        <video id="lb-video" controls></video>
-    </div>
+    <img id="lb-img" src="" alt=""/>
+    <video id="lb-video" controls></video>
     <button class="lb-prev" onclick="lbShift(-1)">&#8592;</button>
     <button class="lb-next" onclick="lbShift(1)">&#8594;</button>
     <div class="lb-info" id="lb-info"></div>
 </div>
 
+<!-- ════════════════════════════════════════════════════════════════
+  HOW PHOTOS WORK — NO MANUAL COUNTS NEEDED
+  ──────────────────────────────────────────
+  The site automatically discovers your photos by trying to load
+  them one by one (1.jpg, 2.jpg, 3.jpg …) and stops when one
+  fails to load. So:
 
-<!-- ══════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ══════════════════════════════════════════════════════════
+  • Name your photos  1.jpg  2.jpg  3.jpg  etc.
+  • Put them in the correct folder (see below)
+  • Upload as many as you like — the site finds them all
+  • For videos: name the file  tour.mp4  in the same folder
 
-  HOW TO ADD PHOTOS:
-  ─────────────────
-  Each property has a config entry below. Just change the number
-  in  count: N  to however many photos you have in that folder.
-  Photos must be named  1.jpg, 2.jpg, 3.jpg … N.jpg
-
-  For Elpidos video: place your file at  images/Elpidos/tour.mp4
-  (any extension works — just update elpidosVideo below)
-
-════════════════════════════════════════════════════════════ -->
+  FOLDER STRUCTURE:
+    images/
+      Elpidos/         → 1.jpg … N.jpg  +  tour.mp4 (optional)
+      Kallithea0a/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
+      Kallithea0b/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
+      Kallithea1/      → 1.jpg … N.jpg  +  tour.mp4 (optional)
+      Kallithea2a/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
+      Kallithea2b/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
+════════════════════════════════════════════════════════════════ -->
 <script>
-/* ── CONFIG — edit counts here ─────────────────────────────────── */
-const ELPIDOS_CONFIG = {
-    folder: 'images/Elpidos',
-    count: 8,           // ← change to however many photos you have
-    ext: 'jpg',
-    fallback: 'images/pic02.jpg'
-};
-const ELPIDOS_VIDEO = 'images/Elpidos/tour.mp4'; // set to '' to hide the button
+/* ══ CONFIG ══════════════════════════════════════════════════════
+   Only edit these if you change folder names or video filenames.
+   You do NOT need to change anything when adding more photos.
+═══════════════════════════════════════════════════════════════ */
+const ELPIDOS_FOLDER = 'images/Elpidos';
+const ELPIDOS_VIDEO  = 'images/Elpidos/tour.mp4';   // set '' to hide button
 
-const KALLITHEA_CONFIG = [
-    { label: 'Ground Floor A', folder: 'images/Kallithea0a', count: 5,  ext: 'jpg', fallback: 'images/pic01.jpg' },
-    { label: 'Ground Floor B', folder: 'images/Kallithea0b', count: 4,  ext: 'jpg', fallback: 'images/pic01.jpg' },
-    { label: '1st Floor',      folder: 'images/Kallithea1',  count: 6,  ext: 'jpg', fallback: 'images/pic01.jpg' },
-    { label: 'Upper Studio A', folder: 'images/Kallithea2a', count: 4,  ext: 'jpg', fallback: 'images/pic01.jpg' },
-    { label: 'Upper Studio B', folder: 'images/Kallithea2b', count: 4,  ext: 'jpg', fallback: 'images/pic01.jpg' },
+const KALLITHEA_PANELS = [
+    { folder: 'images/Kallithea0a', video: 'images/Kallithea0a/tour.mp4' },
+    { folder: 'images/Kallithea0b', video: 'images/Kallithea0b/tour.mp4' },
+    { folder: 'images/Kallithea1',  video: 'images/Kallithea1/tour.mp4'  },
+    { folder: 'images/Kallithea2a', video: 'images/Kallithea2a/tour.mp4' },
+    { folder: 'images/Kallithea2b', video: 'images/Kallithea2b/tour.mp4' },
 ];
-/* ── END CONFIG ──────────────────────────────────────────────────── */
+/* ══ END CONFIG ══════════════════════════════════════════════════ */
 
 
-/* ── Build image arrays from config ──────────────────────────────── */
-function buildImages(cfg) {
+/* ── Helpers ─────────────────────────────────────────────────── */
+// Try to load an image; resolves true/false
+function tryImage(src) {
+    return new Promise(resolve => {
+        const img = new Image();
+        img.onload  = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = src;
+    });
+}
+
+// Try to load a video; resolves true/false
+function tryVideo(src) {
+    if (!src) return Promise.resolve(false);
+    return new Promise(resolve => {
+        const v = document.createElement('video');
+        v.onloadedmetadata = () => resolve(true);
+        v.onerror = () => resolve(false);
+        v.src = src;
+        // some browsers don't fire events — timeout fallback
+        setTimeout(() => resolve(false), 3000);
+    });
+}
+
+// Discover all numbered images in a folder (1.jpg, 2.jpg …)
+async function discoverImages(folder) {
     const imgs = [];
-    for (let i = 1; i <= cfg.count; i++) imgs.push(`${cfg.folder}/${i}.${cfg.ext}`);
+    let n = 1;
+    while (true) {
+        const src = `${folder}/${n}.jpg`;
+        const ok = await tryImage(src);
+        if (!ok) break;
+        imgs.push(src);
+        n++;
+        if (n > 100) break; // safety cap
+    }
     return imgs;
 }
 
-const egImages = buildImages(ELPIDOS_CONFIG);
-let egIdx = 0;
 
-const kImages = KALLITHEA_CONFIG.map(buildImages);
-const kIdx = KALLITHEA_CONFIG.map(() => 0);
-
-
-/* ── NAV scroll ─────────────────────────────────────────────────── */
+/* ══ NAV ═════════════════════════════════════════════════════════ */
 window.addEventListener('scroll', () =>
     document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60));
 
 
-/* ══════════════════════════════════════════════════════════
-   ELPIDOS GALLERY
-══════════════════════════════════════════════════════════ */
-function initElpidos() {
+/* ══ ELPIDOS GALLERY ═════════════════════════════════════════════ */
+let egImages = [], egIdx = 0;
+
+async function initElpidos() {
+    egImages = await discoverImages(ELPIDOS_FOLDER);
+    if (!egImages.length) egImages = ['images/pic02.jpg'];
+
+    // set first image
+    document.getElementById('eg-main').src = egImages[0];
+
+    // build dots
     const dotsWrap = document.getElementById('eg-dots');
     dotsWrap.innerHTML = '';
     egImages.forEach((_, i) => {
@@ -986,8 +585,11 @@ function initElpidos() {
     });
     updateEgCounter();
 
-    // hide video button if no video configured
-    if (!ELPIDOS_VIDEO) document.querySelector('.g-btn-tl').style.display = 'none';
+    // check for video
+    if (ELPIDOS_VIDEO) {
+        const hasVideo = await tryVideo(ELPIDOS_VIDEO);
+        if (hasVideo) document.getElementById('eg-video-btn').style.display = 'block';
+    }
 }
 
 function setEg(idx) {
@@ -995,49 +597,55 @@ function setEg(idx) {
     const img = document.getElementById('eg-main');
     img.classList.add('fading');
     setTimeout(() => { img.src = egImages[egIdx]; img.classList.remove('fading'); }, 180);
-    document.querySelectorAll('#eg-dots .g-dot').forEach((d, i) =>
-        d.classList.toggle('active', i === egIdx));
+    document.querySelectorAll('#eg-dots .g-dot').forEach((d, i) => d.classList.toggle('active', i === egIdx));
     updateEgCounter();
 }
-
 function egShift(dir) { setEg(egIdx + dir); }
-
 function updateEgCounter() {
-    document.getElementById('eg-counter').textContent =
-        `${egIdx + 1} / ${egImages.length}`;
-}
-
-function openElpidosVideo() {
-    if (!ELPIDOS_VIDEO) return;
-    const vid = document.getElementById('lb-video');
-    const img = document.getElementById('lb-img');
-    img.style.display = 'none';
-    vid.src = ELPIDOS_VIDEO; vid.style.display = 'block';
-    document.getElementById('lb-info').textContent = 'Video Tour – Elpidos';
-    lbImages = []; // disable arrow nav in video mode
-    document.getElementById('lightbox').classList.add('open');
+    document.getElementById('eg-counter').textContent = `${egIdx + 1} / ${egImages.length}`;
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   KALLITHEA TABS + GALLERIES
-══════════════════════════════════════════════════════════ */
-function initKallithea() {
-    KALLITHEA_CONFIG.forEach((cfg, p) => {
-        const imgs = kImages[p];
-        const thumbStrip = document.getElementById('kth-' + p);
-        thumbStrip.innerHTML = '';
+/* ══ KALLITHEA GALLERIES ═════════════════════════════════════════ */
+const kImages = Array(5).fill(null).map(() => []);
+const kIdx    = [0, 0, 0, 0, 0];
 
-        imgs.forEach((src, i) => {
+async function initKallithea() {
+    await Promise.all(KALLITHEA_PANELS.map(async (cfg, p) => {
+        // discover images
+        const imgs = await discoverImages(cfg.folder);
+        kImages[p] = imgs.length ? imgs : [`images/pic0${p+1}.jpg`];
+
+        // build thumbnails
+        const strip = document.getElementById('kth-' + p);
+        strip.innerHTML = '';
+        kImages[p].forEach((src, i) => {
             const t = document.createElement('img');
             t.className = 't-thumb' + (i === 0 ? ' active' : '');
             t.src = src; t.alt = '';
-            t.onerror = () => { t.style.display = 'none'; };
+            t.onerror = () => t.style.display = 'none';
             t.onclick = () => setKImg(p, i);
-            thumbStrip.appendChild(t);
+            strip.appendChild(t);
         });
+
+        // set first image
+        const main = document.getElementById('km-' + p);
+        if (main && kImages[p].length) main.src = kImages[p][0];
         updateKCounter(p);
-    });
+
+        // check for video
+        if (cfg.video) {
+            const hasVid = await tryVideo(cfg.video);
+            if (hasVid) {
+                const gal = document.getElementById('kgal-' + p);
+                const btn = document.createElement('button');
+                btn.className = 'kp-video-btn';
+                btn.innerHTML = '&#9654; Video Tour';
+                btn.onclick = (e) => { e.stopPropagation(); openVideo(cfg.video, 'Video Tour'); };
+                gal.appendChild(btn);
+            }
+        }
+    }));
 }
 
 function setKImg(p, i) {
@@ -1045,75 +653,80 @@ function setKImg(p, i) {
     const img = document.getElementById('km-' + p);
     img.classList.add('fading');
     setTimeout(() => { img.src = kImages[p][kIdx[p]]; img.classList.remove('fading'); }, 150);
-    document.querySelectorAll('#kth-' + p + ' .t-thumb').forEach((t, j) =>
-        t.classList.toggle('active', j === kIdx[p]));
+    document.querySelectorAll('#kth-' + p + ' .t-thumb').forEach((t, j) => t.classList.toggle('active', j === kIdx[p]));
     updateKCounter(p);
 }
-
 function updateKCounter(p) {
-    document.getElementById('kcnt-' + p).textContent =
-        `${kIdx[p] + 1} / ${kImages[p].length}`;
+    document.getElementById('kcnt-' + p).textContent = `${kIdx[p] + 1} / ${kImages[p].length}`;
 }
-
 function showKTab(idx) {
     document.querySelectorAll('.k-panel').forEach((el, i) => el.classList.toggle('active', i === idx));
     document.querySelectorAll('.k-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
 }
 
 
-/* ══════════════════════════════════════════════════════════
-   LIGHTBOX
-══════════════════════════════════════════════════════════ */
+/* ══ VIDEO OPENER ════════════════════════════════════════════════ */
+function openVideo(src, label) {
+    const lb  = document.getElementById('lightbox');
+    const img = document.getElementById('lb-img');
+    const vid = document.getElementById('lb-video');
+    img.style.display = 'none';
+    vid.src = src; vid.style.display = 'block';
+    document.getElementById('lb-info').textContent = label || 'Video Tour';
+    lbImages = [];
+    lb.classList.add('open');
+}
+
+
+/* ══ LIGHTBOX ════════════════════════════════════════════════════ */
 let lbImages = [], lbIdx = 0;
 
 function openLightbox(src, idx) {
     lbImages = (src === 'elpidos') ? egImages : kImages[src];
     lbIdx = Math.max(0, Math.min(idx, lbImages.length - 1));
-    const lb = document.getElementById('lightbox');
     const img = document.getElementById('lb-img');
     const vid = document.getElementById('lb-video');
     vid.pause(); vid.src = ''; vid.style.display = 'none';
     img.style.display = 'block';
     img.src = lbImages[lbIdx];
     updateLbInfo();
-    lb.classList.add('open');
+    document.getElementById('lightbox').classList.add('open');
 }
-
 function updateLbInfo() {
     document.getElementById('lb-info').textContent =
         lbImages.length ? `${lbIdx + 1} / ${lbImages.length}` : '';
 }
-
 function lbShift(dir) {
     if (!lbImages.length) return;
     lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
     document.getElementById('lb-img').src = lbImages[lbIdx];
     updateLbInfo();
 }
-
 function closeLightbox() {
-    const lb = document.getElementById('lightbox');
-    lb.classList.remove('open');
+    document.getElementById('lightbox').classList.remove('open');
     const vid = document.getElementById('lb-video');
     vid.pause(); vid.src = '';
     document.getElementById('lb-img').style.display = 'block';
     document.getElementById('lb-video').style.display = 'none';
 }
-
-document.getElementById('lightbox').addEventListener('click', e => {
-    if (e.target.id === 'lightbox') closeLightbox();
-});
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLightbox(); });
 document.addEventListener('keydown', e => {
     if (!document.getElementById('lightbox').classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lbShift(-1);
+    if (e.key === 'ArrowLeft')  lbShift(-1);
     if (e.key === 'ArrowRight') lbShift(1);
 });
 
 
-/* ── INIT ── */
-initElpidos();
-initKallithea();
+/* ══ INIT ════════════════════════════════════════════════════════ */
+async function init() {
+    await Promise.all([initElpidos(), initKallithea()]);
+    // hide loading overlay
+    const overlay = document.getElementById('loading-overlay');
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.style.display = 'none', 600);
+}
+init();
 </script>
 </body>
 </html>
