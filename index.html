@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Photo config — edit photos.js to add/remove photos -->
-    <script src="photos.js"></script>
     <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -71,7 +69,7 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .prop-maplink:hover{color:#65cdd8}
 .elpidos-grid{display:grid;grid-template-columns:55% 45%}
 .eg-gallery{position:relative;background:#0d1120;overflow:hidden;min-height:460px}
-.eg-gallery .main-img{width:100%;height:460px;object-fit:cover;display:block;transition:opacity .35s}
+.eg-gallery .main-img{width:100%;height:460px;object-fit:cover;display:block;transition:opacity .3s}
 .eg-gallery .main-img.fading{opacity:0}
 .g-bar{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,14,24,.85));padding:2rem 1.2rem 1rem;display:flex;align-items:center;justify-content:space-between}
 .g-dots{display:flex;gap:5px;flex-wrap:wrap;max-width:65%}
@@ -81,7 +79,7 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .g-arrow{width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);cursor:pointer;font-size:.85rem;transition:background .2s}
 .g-arrow:hover{background:var(--accent);border-color:var(--accent);color:var(--navy)}
 .g-btn-tl,.g-btn-tr{position:absolute;top:.9rem;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.38rem .85rem;border:none;cursor:pointer;font-family:'Raleway',sans-serif}
-.g-btn-tl{left:.9rem;background:var(--accent2);color:#fff}
+.g-btn-tl{left:.9rem;background:var(--accent2);color:#fff;display:none}
 .g-btn-tl:hover{background:#d07040}
 .g-btn-tr{right:.9rem;background:rgba(0,0,0,.5);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2)}
 .g-btn-tr:hover{background:rgba(255,255,255,.15)}
@@ -219,11 +217,11 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     <div class="prop-wrap">
         <div class="prop-card">
             <div class="elpidos-grid">
-                <div class="eg-gallery" id="eg-gallery">
-                    <img class="main-img" id="eg-main" src="images/pic02.jpg" alt="Elpidos apartment"/>
-                    <button class="g-btn-tl" id="eg-video-btn" style="display:none" onclick="openVideo('elpidos')">&#9654; Video Tour</button>
-                    <button class="g-btn-tr" onclick="openLightbox('elpidos',egIdx)">&#10530; Expand</button>
-                    <div class="g-counter" id="eg-counter">1 / –</div>
+                <div class="eg-gallery">
+                    <img class="main-img" id="eg-main" src="images/Elpidos/1.jpg" onerror="this.src='images/pic02.jpg'" alt="Elpidos apartment"/>
+                    <button class="g-btn-tl" id="eg-vid-btn" onclick="openVideo('images/Elpidos/tour.mp4')">&#9654; Video Tour</button>
+                    <button class="g-btn-tr" onclick="openLightbox('elpidos', egIdx)">&#10530; Expand</button>
+                    <div class="g-counter" id="eg-counter">1 / …</div>
                     <div class="g-bar">
                         <div class="g-dots" id="eg-dots"></div>
                         <div class="g-arrows">
@@ -274,7 +272,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-0" onclick="openLightbox(0,kIdx[0])">
                     <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(0,kIdx[0])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-0">1 / –</div>
+                    <div class="kp-count" id="kcnt-0">…</div>
                     <div class="thumb-strip" id="kth-0" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
@@ -284,13 +282,12 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
-
             <!-- Panel 1 -->
             <div class="k-panel" id="kpanel-1">
                 <div class="kp-gallery" id="kgal-1" onclick="openLightbox(1,kIdx[1])">
                     <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(1,kIdx[1])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-1">1 / –</div>
+                    <div class="kp-count" id="kcnt-1">…</div>
                     <div class="thumb-strip" id="kth-1" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
@@ -300,13 +297,12 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
-
             <!-- Panel 2 -->
             <div class="k-panel" id="kpanel-2">
                 <div class="kp-gallery" id="kgal-2" onclick="openLightbox(2,kIdx[2])">
                     <img class="main-img" id="km-2" src="images/Kallithea1/1.jpg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(2,kIdx[2])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-2">1 / –</div>
+                    <div class="kp-count" id="kcnt-2">…</div>
                     <div class="thumb-strip" id="kth-2" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
@@ -317,13 +313,12 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
-
             <!-- Panel 3 -->
             <div class="k-panel" id="kpanel-3">
                 <div class="kp-gallery" id="kgal-3" onclick="openLightbox(3,kIdx[3])">
                     <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(3,kIdx[3])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-3">1 / –</div>
+                    <div class="kp-count" id="kcnt-3">…</div>
                     <div class="thumb-strip" id="kth-3" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
@@ -333,13 +328,12 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
-
             <!-- Panel 4 -->
             <div class="k-panel" id="kpanel-4">
                 <div class="kp-gallery" id="kgal-4" onclick="openLightbox(4,kIdx[4])">
                     <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(4,kIdx[4])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-4">1 / –</div>
+                    <div class="kp-count" id="kcnt-4">…</div>
                     <div class="thumb-strip" id="kth-4" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
@@ -415,125 +409,161 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
 </div>
 
 <script>
-/* photos.js is loaded in <head> and sets window.PHOTO_CONFIG */
-const C = window.PHOTO_CONFIG;
+/*
+  HOW PHOTOS WORK — no manual counts needed, ever.
+  Photos named 1.jpg, 2.jpg, 3.jpg … are loaded in parallel (all at once).
+  The gallery shows whichever ones actually exist. Add more photos to the
+  folder and they appear automatically next time the page loads.
+  Max supported per folder: 50 (increase MAX below if needed).
+*/
 
-/* Build full image URL arrays from config */
-function buildUrls(key) {
-    const cfg = C[key];
-    return cfg.photos.map(f => `${cfg.folder}/${f}`);
+const MAX = 50; // max photos to check per folder
+
+const FOLDERS = {
+    elpidos:     'images/Elpidos',
+    kallithea0a: 'images/Kallithea0a',
+    kallithea0b: 'images/Kallithea0b',
+    kallithea1:  'images/Kallithea1',
+    kallithea2a: 'images/Kallithea2a',
+    kallithea2b: 'images/Kallithea2b',
+};
+
+const VIDEOS = {
+    elpidos:     'images/Elpidos/tour.mp4',
+    kallithea0a: '',
+    kallithea0b: '',
+    kallithea1:  '',
+    kallithea2a: '',
+    kallithea2b: '',
+};
+
+// Load one image, resolve with src or null
+function probe(src) {
+    return new Promise(res => {
+        const i = new Image();
+        i.onload  = () => res(src);
+        i.onerror = () => res(null);
+        i.src = src;
+    });
 }
 
-const egImages = buildUrls('elpidos');
-const kImages  = [
-    buildUrls('kallithea0a'),
-    buildUrls('kallithea0b'),
-    buildUrls('kallithea1'),
-    buildUrls('kallithea2a'),
-    buildUrls('kallithea2b'),
-];
-let egIdx = 0;
-const kIdx = [0,0,0,0,0];
+// Probe all N images in parallel, return only the ones that loaded, in order
+async function probeFolder(folder) {
+    const candidates = Array.from({length: MAX}, (_, i) => `${folder}/${i+1}.jpg`);
+    const results = await Promise.all(candidates.map(probe));
+    // Keep only loaded ones, preserving numeric order
+    return results.filter(Boolean);
+}
 
-/* NAV */
+/* ── state ── */
+let egImages = [], egIdx = 0;
+const kImages = [[],[],[],[],[]];
+const kIdx    = [0,0,0,0,0];
+const kKeys   = ['kallithea0a','kallithea0b','kallithea1','kallithea2a','kallithea2b'];
+
+/* ── NAV ── */
 window.addEventListener('scroll', () =>
     document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60));
 
-/* ── ELPIDOS ─────────────────────────────────────────────────── */
-function initElpidos() {
-    document.getElementById('eg-main').src = egImages[0];
+/* ── ELPIDOS ── */
+function buildEgDots() {
     const wrap = document.getElementById('eg-dots');
     wrap.innerHTML = '';
     egImages.forEach((_, i) => {
         const d = document.createElement('button');
-        d.className = 'g-dot' + (i === 0 ? ' active' : '');
+        d.className = 'g-dot' + (i===0?' active':'');
         d.onclick = () => setEg(i);
         wrap.appendChild(d);
     });
-    updateEgCounter();
-    if (C.elpidos.video) document.getElementById('eg-video-btn').style.display = 'block';
 }
 function setEg(idx) {
     egIdx = (idx + egImages.length) % egImages.length;
     const img = document.getElementById('eg-main');
     img.classList.add('fading');
-    setTimeout(() => { img.src = egImages[egIdx]; img.classList.remove('fading'); }, 180);
+    setTimeout(() => { img.src = egImages[egIdx]; img.classList.remove('fading'); }, 150);
     document.querySelectorAll('#eg-dots .g-dot').forEach((d,i) => d.classList.toggle('active', i===egIdx));
-    updateEgCounter();
-}
-function egShift(dir) { setEg(egIdx + dir); }
-function updateEgCounter() {
     document.getElementById('eg-counter').textContent = `${egIdx+1} / ${egImages.length}`;
 }
+function egShift(dir) { setEg(egIdx + dir); }
 
-/* ── KALLITHEA ───────────────────────────────────────────────── */
-const kKeys = ['kallithea0a','kallithea0b','kallithea1','kallithea2a','kallithea2b'];
-
-function initKallithea() {
-    kKeys.forEach((key, p) => {
-        const imgs = kImages[p];
-        // set first image
-        document.getElementById('km-' + p).src = imgs[0] || 'images/pic01.jpg';
-        // thumbnails
-        const strip = document.getElementById('kth-' + p);
-        strip.innerHTML = '';
-        imgs.forEach((src, i) => {
-            const t = document.createElement('img');
-            t.className = 't-thumb' + (i === 0 ? ' active' : '');
-            t.src = src; t.alt = '';
-            t.onclick = () => setKImg(p, i);
-            strip.appendChild(t);
-        });
-        updateKCounter(p);
-        // video button
-        const vid = C[key].video;
-        if (vid) {
-            const gal = document.getElementById('kgal-' + p);
-            const btn = document.createElement('button');
-            btn.className = 'kp-video-btn';
-            btn.innerHTML = '&#9654; Video Tour';
-            btn.onclick = (e) => { e.stopPropagation(); openVideo(key); };
-            gal.appendChild(btn);
-        }
-    });
+async function initElpidos() {
+    egImages = await probeFolder(FOLDERS.elpidos);
+    if (!egImages.length) egImages = ['images/pic02.jpg'];
+    document.getElementById('eg-main').src = egImages[0];
+    document.getElementById('eg-counter').textContent = `1 / ${egImages.length}`;
+    buildEgDots();
+    // video
+    if (VIDEOS.elpidos) {
+        const v = document.getElementById('eg-vid-btn');
+        v.style.display = 'block';
+        v.onclick = () => openVideo(VIDEOS.elpidos);
+    }
 }
+
+/* ── KALLITHEA ── */
+function buildKThumbs(p) {
+    const strip = document.getElementById('kth-' + p);
+    strip.innerHTML = '';
+    kImages[p].forEach((src, i) => {
+        const t = document.createElement('img');
+        t.className = 't-thumb' + (i===0?' active':'');
+        t.src = src; t.alt = '';
+        t.onclick = () => setKImg(p, i);
+        strip.appendChild(t);
+    });
+    document.getElementById('kcnt-' + p).textContent = `1 / ${kImages[p].length}`;
+}
+
 function setKImg(p, i) {
     kIdx[p] = (i + kImages[p].length) % kImages[p].length;
     const img = document.getElementById('km-' + p);
     img.classList.add('fading');
     setTimeout(() => { img.src = kImages[p][kIdx[p]]; img.classList.remove('fading'); }, 150);
     document.querySelectorAll('#kth-' + p + ' .t-thumb').forEach((t,j) => t.classList.toggle('active', j===kIdx[p]));
-    updateKCounter(p);
-}
-function updateKCounter(p) {
     document.getElementById('kcnt-' + p).textContent = `${kIdx[p]+1} / ${kImages[p].length}`;
 }
+
 function showKTab(idx) {
     document.querySelectorAll('.k-panel').forEach((el,i) => el.classList.toggle('active', i===idx));
     document.querySelectorAll('.k-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
 }
 
-/* ── VIDEO ───────────────────────────────────────────────────── */
-function openVideo(key) {
-    const cfg = C[key];
-    const src = `${cfg.folder}/${cfg.video}`;
-    const img = document.getElementById('lb-img');
-    const vid = document.getElementById('lb-video');
-    img.style.display = 'none';
-    vid.src = src; vid.style.display = 'block';
+async function initKallithea() {
+    await Promise.all(kKeys.map(async (key, p) => {
+        kImages[p] = await probeFolder(FOLDERS[key]);
+        if (!kImages[p].length) kImages[p] = ['images/pic01.jpg'];
+        document.getElementById('km-' + p).src = kImages[p][0];
+        buildKThumbs(p);
+        // video
+        if (VIDEOS[key]) {
+            const gal = document.getElementById('kgal-' + p);
+            const btn = document.createElement('button');
+            btn.className = 'kp-video-btn';
+            btn.innerHTML = '&#9654; Video Tour';
+            btn.onclick = e => { e.stopPropagation(); openVideo(VIDEOS[key]); };
+            gal.appendChild(btn);
+        }
+    }));
+}
+
+/* ── VIDEO ── */
+function openVideo(src) {
+    document.getElementById('lb-img').style.display = 'none';
+    const v = document.getElementById('lb-video');
+    v.src = src; v.style.display = 'block';
     document.getElementById('lb-info').textContent = 'Video Tour';
     lbImages = [];
     document.getElementById('lightbox').classList.add('open');
 }
 
-/* ── LIGHTBOX ────────────────────────────────────────────────── */
+/* ── LIGHTBOX ── */
 let lbImages = [], lbIdx = 0;
 function openLightbox(src, idx) {
-    lbImages = (src === 'elpidos') ? egImages : kImages[src];
+    lbImages = src === 'elpidos' ? egImages : kImages[src];
     lbIdx = Math.max(0, Math.min(idx, lbImages.length-1));
+    const v = document.getElementById('lb-video');
+    v.pause(); v.src=''; v.style.display='none';
     const img = document.getElementById('lb-img');
-    const vid = document.getElementById('lb-video');
-    vid.pause(); vid.src=''; vid.style.display='none';
     img.style.display='block'; img.src=lbImages[lbIdx];
     document.getElementById('lb-info').textContent = `${lbIdx+1} / ${lbImages.length}`;
     document.getElementById('lightbox').classList.add('open');
@@ -546,8 +576,8 @@ function lbShift(dir) {
 }
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
-    const vid = document.getElementById('lb-video');
-    vid.pause(); vid.src='';
+    const v = document.getElementById('lb-video');
+    v.pause(); v.src='';
     document.getElementById('lb-img').style.display='block';
     document.getElementById('lb-video').style.display='none';
 }
@@ -559,8 +589,8 @@ document.addEventListener('keydown', e => {
     if (e.key==='ArrowRight') lbShift(1);
 });
 
-initElpidos();
-initKallithea();
+/* ── INIT — probe all folders in parallel ── */
+Promise.all([initElpidos(), initKallithea()]);
 </script>
 </body>
 </html>
