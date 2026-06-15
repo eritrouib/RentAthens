@@ -4,38 +4,27 @@
     <title>RentAthens – Find Your Ideal Place in Athens</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="RentAthens – quality rooms and studios in Athens since 2018. Elpidos city centre and Kallithea locations." />
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;600;700;800&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Photo config — edit photos.js to add/remove photos -->
+    <script src="photos.js"></script>
     <style>
-/* ══ RESET ══════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#c8d0e0;overflow-x:hidden;line-height:1.7}
-
-/* ══ VARIABLES ══════════════════════════════════════════════════ */
 :root{
     --navy:#1c2230;--navy-mid:#232d40;--navy-light:#2e3a52;
     --accent:#4db8c4;--accent2:#e8875a;
     --white:#ffffff;--off-white:#e8edf5;--text-dim:#8a96ae;
-    --border:rgba(255,255,255,0.08);--card-bg:#232d40;
+    --border:rgba(255,255,255,0.08);
 }
-
-/* ══ NAV ════════════════════════════════════════════════════════ */
-#navbar{
-    position:fixed;top:0;left:0;right:0;z-index:200;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:1.1rem 3rem;background:rgba(28,34,48,0);
-    transition:background .4s,box-shadow .4s,padding .3s;
-}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:rgba(28,34,48,0);transition:background .4s,box-shadow .4s,padding .3s}
 #navbar.scrolled{background:rgba(28,34,48,.97);box-shadow:0 2px 24px rgba(0,0,0,.4);padding:.8rem 3rem}
 .nav-logo{font-family:'Raleway',sans-serif;font-size:1.35rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--white)}
 .nav-logo span{color:var(--accent)}
 .nav-links{display:flex;gap:2.2rem;list-style:none}
 .nav-links a{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.65);transition:color .2s}
 .nav-links a:hover{color:var(--accent)}
-
-/* ══ HERO ═══════════════════════════════════════════════════════ */
 #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1800&q=80');background-size:cover;background-position:center 60%;animation:heroZoom 18s ease-in-out infinite alternate}
 @keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}
@@ -52,8 +41,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .hero-cta.outline:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
 .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.3);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;animation:bounce 2.2s ease-in-out infinite}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
-
-/* ══ ABOUT ══════════════════════════════════════════════════════ */
 #about{background:var(--navy-mid);padding:5rem 0}
 .about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;padding:0 3rem;align-items:center}
 .about-headline{font-family:'Raleway',sans-serif;font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:200;letter-spacing:.06em;text-transform:uppercase;color:var(--white);line-height:1.25}
@@ -63,8 +50,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .stat-l{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--text-dim);margin-top:.3rem}
 .about-body p{font-size:.92rem;line-height:1.9;color:var(--text-dim);margin-bottom:1rem}
 .about-body p strong{color:var(--off-white);font-weight:600}
-
-/* ══ SECTION HEADER ════════════════════════════════════════════ */
 #properties{background:var(--navy);padding-bottom:5rem}
 .section-header{text-align:center;padding:5rem 2rem 3.5rem}
 .section-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
@@ -72,8 +57,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .section-title strong{font-weight:800}
 .section-line{width:48px;height:2px;background:var(--accent);margin:1.4rem auto 0}
 .section-sub{max-width:600px;margin:1.2rem auto 0;font-size:.92rem;color:var(--text-dim);line-height:1.8}
-
-/* ══ PROPERTY CARD ══════════════════════════════════════════════ */
 .prop-wrap{max-width:1140px;margin:0 auto 4rem;padding:0 2rem}
 .prop-card{background:var(--navy-mid);border:1px solid var(--border);overflow:hidden}
 .prop-pill{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;padding:.28rem .85rem;background:var(--accent);color:var(--navy)}
@@ -86,8 +69,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .p-tag{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .75rem;border:1px solid rgba(255,255,255,.12);color:var(--text-dim)}
 .prop-maplink{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;margin-top:auto;transition:color .2s}
 .prop-maplink:hover{color:#65cdd8}
-
-/* ══ ELPIDOS ════════════════════════════════════════════════════ */
 .elpidos-grid{display:grid;grid-template-columns:55% 45%}
 .eg-gallery{position:relative;background:#0d1120;overflow:hidden;min-height:460px}
 .eg-gallery .main-img{width:100%;height:460px;object-fit:cover;display:block;transition:opacity .35s}
@@ -106,8 +87,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .g-btn-tr:hover{background:rgba(255,255,255,.15)}
 .g-counter{position:absolute;top:.9rem;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.1em;color:rgba(255,255,255,.5);background:rgba(0,0,0,.4);padding:.25rem .6rem}
 .eg-info{padding:2.5rem 2.5rem 2rem;display:flex;flex-direction:column;gap:1rem}
-
-/* ══ KALLITHEA ══════════════════════════════════════════════════ */
 .kallithea-header-area{padding:2.5rem 2.5rem 1.5rem;border-bottom:1px solid var(--border)}
 .kall-desc{font-size:.88rem;color:var(--text-dim);line-height:1.85;margin:.8rem 0 1rem;max-width:820px}
 .k-tabs{display:flex;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
@@ -130,11 +109,8 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .kp-count{position:absolute;top:.8rem;right:.8rem;font-size:.6rem;letter-spacing:.1em;color:rgba(255,255,255,.55);background:rgba(0,0,0,.5);padding:.22rem .55rem}
 .kp-expand{position:absolute;top:.8rem;left:.8rem;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);padding:.25rem .6rem;cursor:pointer;font-family:'Raleway',sans-serif}
 .kp-expand:hover{background:rgba(255,255,255,.12);color:#fff}
-/* video button for kallithea panels */
 .kp-video-btn{position:absolute;bottom:3.8rem;right:.8rem;font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--accent2);color:#fff;border:none;padding:.35rem .75rem;cursor:pointer;font-family:'Raleway',sans-serif;z-index:10}
 .kp-video-btn:hover{background:#d07040}
-
-/* ══ TESTIMONIALS ═══════════════════════════════════════════════ */
 #testimonials{background:var(--navy-mid);padding:0 0 6rem}
 .tgrid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;padding:0 2rem}
 .tcard{background:var(--navy-light);border:1px solid var(--border);padding:2.2rem 1.8rem 1.8rem;position:relative;transition:border-color .25s}
@@ -142,8 +118,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .tcard::before{content:'\201C';position:absolute;top:.8rem;left:1.4rem;font-family:'Source Serif 4',serif;font-size:4.5rem;line-height:1;color:rgba(77,184,196,.12);pointer-events:none}
 .tcard p{font-size:.88rem;line-height:1.85;color:var(--text-dim);padding-top:1.2rem;margin-bottom:1.4rem}
 .tcard-name{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
-
-/* ══ EXPLORE ════════════════════════════════════════════════════ */
 #explore{background:var(--navy-light);padding:6rem 2rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .explore-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:2.5rem}
 .e-btn{padding:.9rem 2.2rem;font-family:'Raleway',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:all .25s}
@@ -151,8 +125,6 @@ body{font-family:'Raleway',sans-serif;font-weight:300;background:#1c2230;color:#
 .e-btn.primary:hover{background:#65cdd8}
 .e-btn.ghost{border:2px solid rgba(255,255,255,.2);color:var(--off-white)}
 .e-btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-
-/* ══ FOOTER ═════════════════════════════════════════════════════ */
 footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;max-width:1140px;margin:0 auto}
 .f-logo{font-family:'Raleway',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--white)}
 .f-logo span{color:var(--accent)}
@@ -166,8 +138,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
 .f-social a:hover{color:var(--accent)}
 .footer-bar{background:#111620;border-top:1px solid rgba(255,255,255,.05);padding:1.4rem 3rem;display:flex;justify-content:space-between;align-items:center;margin-top:3rem}
 .footer-bar p{font-size:.68rem;letter-spacing:.1em;color:rgba(255,255,255,.2)}
-
-/* ══ LIGHTBOX ═══════════════════════════════════════════════════ */
 #lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,8,16,.97);align-items:center;justify-content:center;flex-direction:column}
 #lightbox.open{display:flex}
 #lb-img{max-width:90vw;max-height:82vh;object-fit:contain;display:block}
@@ -178,18 +148,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 .lb-prev:hover,.lb-next:hover{background:var(--accent);border-color:var(--accent);color:var(--navy)}
 .lb-info{margin-top:1rem;font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.35);text-align:center}
-
-/* ══ LOADING OVERLAY ════════════════════════════════════════════ */
-#loading-overlay{position:fixed;inset:0;background:var(--navy);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;transition:opacity .5s}
-#loading-overlay.hidden{opacity:0;pointer-events:none}
-.loader-logo{font-family:'Raleway',sans-serif;font-size:1.5rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--white)}
-.loader-logo span{color:var(--accent)}
-.loader-bar{width:200px;height:2px;background:rgba(255,255,255,.1);overflow:hidden}
-.loader-bar::after{content:'';display:block;height:100%;width:40%;background:var(--accent);animation:loading 1.2s ease-in-out infinite}
-@keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-.loader-text{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim)}
-
-/* ══ RESPONSIVE ═════════════════════════════════════════════════ */
 @media(max-width:900px){
     .about-inner{grid-template-columns:1fr;gap:2.5rem}
     .elpidos-grid,.k-panel.active{grid-template-columns:1fr}
@@ -209,14 +167,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
 </head>
 <body>
 
-<!-- LOADING OVERLAY -->
-<div id="loading-overlay">
-    <div class="loader-logo">Rent<span>Athens</span></div>
-    <div class="loader-bar"></div>
-    <div class="loader-text">Loading properties…</div>
-</div>
-
-<!-- NAV -->
 <nav id="navbar">
     <a href="#" class="nav-logo">Rent<span>Athens</span></a>
     <ul class="nav-links">
@@ -227,7 +177,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
@@ -241,7 +190,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     <div class="hero-scroll"><span>Scroll</span><i class="fa-solid fa-chevron-down"></i></div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
     <div class="about-inner">
         <div>
@@ -259,7 +207,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     </div>
 </section>
 
-<!-- PROPERTIES -->
 <section id="properties">
     <div class="section-header">
         <span class="section-tag">Where you'll live</span>
@@ -268,15 +215,15 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
         <p class="section-sub">Check out your preferable location</p>
     </div>
 
-    <!-- ═══ ELPIDOS ═══ -->
+    <!-- ELPIDOS -->
     <div class="prop-wrap">
         <div class="prop-card">
             <div class="elpidos-grid">
                 <div class="eg-gallery" id="eg-gallery">
-                    <img class="main-img" id="eg-main" src="images/pic02.jpg" alt="Elpidos apartment" />
-                    <button class="g-btn-tl" id="eg-video-btn" onclick="openVideo('images/Elpidos/tour.mp4','Elpidos – Video Tour')" style="display:none">&#9654; Video Tour</button>
+                    <img class="main-img" id="eg-main" src="images/pic02.jpg" alt="Elpidos apartment"/>
+                    <button class="g-btn-tl" id="eg-video-btn" style="display:none" onclick="openVideo('elpidos')">&#9654; Video Tour</button>
                     <button class="g-btn-tr" onclick="openLightbox('elpidos',egIdx)">&#10530; Expand</button>
-                    <div class="g-counter" id="eg-counter">Loading…</div>
+                    <div class="g-counter" id="eg-counter">1 / –</div>
                     <div class="g-bar">
                         <div class="g-dots" id="eg-dots"></div>
                         <div class="g-arrows">
@@ -291,10 +238,8 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <h3 class="prop-title"><strong>Elpidos</strong> Street</h3>
                     <p class="prop-desc">A shared apartment of four rooms on the second floor of a classic Athenian building. Only <strong>4 minutes' walk</strong> from the Green metro line and <strong>3 minutes' walk</strong> from AUEB. Modern interiors, great natural light, vibrant neighbourhood.</p>
                     <div class="prop-tags">
-                        <span class="p-tag">4 Rooms</span>
-                        <span class="p-tag">2nd Floor</span>
-                        <span class="p-tag">4 min · Metro</span>
-                        <span class="p-tag">3 min · AUEB</span>
+                        <span class="p-tag">4 Rooms</span><span class="p-tag">2nd Floor</span>
+                        <span class="p-tag">4 min · Metro</span><span class="p-tag">3 min · AUEB</span>
                         <span class="p-tag">Renovated</span>
                     </div>
                     <a class="prop-maplink" href="https://goo.gl/maps/ubNzF62PGYFniL6R6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
@@ -303,7 +248,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
         </div>
     </div>
 
-    <!-- ═══ KALLITHEA ═══ -->
+    <!-- KALLITHEA -->
     <div class="prop-wrap">
         <div class="prop-card">
             <div class="kallithea-header-area">
@@ -312,10 +257,8 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <h3 class="prop-title"><strong>Spartis</strong> Street, Kallithea</h3>
                 <p class="kall-desc">A private multi-floor building offering a range of unit types — ground-floor studios, a first-floor shared apartment and upper-floor studios. Very close to Thiseos Avenue, well-linked with the city centre, Piraeus, and the coast. Ideal for <strong>Teleperformance</strong> employees and students from <strong>Panteion</strong> and <strong>Piraeus University</strong>.</p>
                 <div class="prop-tags" style="margin-bottom:.5rem">
-                    <span class="p-tag">Studios &amp; Rooms</span>
-                    <span class="p-tag">Near Teleperformance</span>
-                    <span class="p-tag">Panteion · Piraeus Univ.</span>
-                    <span class="p-tag">Close to Coast</span>
+                    <span class="p-tag">Studios &amp; Rooms</span><span class="p-tag">Near Teleperformance</span>
+                    <span class="p-tag">Panteion · Piraeus Univ.</span><span class="p-tag">Close to Coast</span>
                 </div>
             </div>
             <div class="k-tabs">
@@ -331,12 +274,11 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-0" onclick="openLightbox(0,kIdx[0])">
                     <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(0,kIdx[0])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-0">Loading…</div>
+                    <div class="kp-count" id="kcnt-0">1 / –</div>
                     <div class="thumb-strip" id="kth-0" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
-                    <span class="prop-pill warm">Studio</span>
-                    <span class="kp-sublabel">Ground Floor · Unit A</span>
+                    <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Ground Floor · Unit A</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio A</strong></h4>
                     <p class="prop-desc">A bright, self-contained studio on the ground floor. Fully furnished with all essentials. Perfect for a professional or student wanting private, comfortable accommodation.</p>
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
@@ -348,12 +290,11 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-1" onclick="openLightbox(1,kIdx[1])">
                     <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(1,kIdx[1])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-1">Loading…</div>
+                    <div class="kp-count" id="kcnt-1">1 / –</div>
                     <div class="thumb-strip" id="kth-1" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
-                    <span class="prop-pill warm">Studio</span>
-                    <span class="kp-sublabel">Ground Floor · Unit B</span>
+                    <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Ground Floor · Unit B</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">Another well-appointed ground-floor studio. Cosy and private, with natural light and modern furnishings. Great transport connections right on the doorstep.</p>
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
@@ -365,14 +306,13 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-2" onclick="openLightbox(2,kIdx[2])">
                     <img class="main-img" id="km-2" src="images/Kallithea1/1.jpg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(2,kIdx[2])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-2">Loading…</div>
+                    <div class="kp-count" id="kcnt-2">1 / –</div>
                     <div class="thumb-strip" id="kth-2" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
-                    <span class="prop-pill">Shared Apartment</span>
-                    <span class="kp-sublabel">1st Floor · 4 Rooms</span>
+                    <span class="prop-pill">Shared Apartment</span><span class="kp-sublabel">1st Floor · 4 Rooms</span>
                     <h4 class="prop-title" style="font-size:1.35rem">First Floor<br><strong>4-Room Apartment</strong></h4>
-                    <p class="prop-desc">A spacious shared apartment with four individual rooms on the first floor. Ideal for students or working professionals who enjoy communal living while keeping their own private space.</p>
+                    <p class="prop-desc">A spacious shared apartment with four individual rooms. Ideal for students or working professionals who enjoy communal living while keeping their own private space.</p>
                     <div class="prop-tags"><span class="p-tag">4 Private Rooms</span><span class="p-tag">Shared Kitchen &amp; Bath</span></div>
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
@@ -383,14 +323,13 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-3" onclick="openLightbox(3,kIdx[3])">
                     <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(3,kIdx[3])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-3">Loading…</div>
+                    <div class="kp-count" id="kcnt-3">1 / –</div>
                     <div class="thumb-strip" id="kth-3" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
-                    <span class="prop-pill warm">Studio</span>
-                    <span class="kp-sublabel">Upper Floor · Unit A</span>
+                    <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Upper Floor · Unit A</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio A</strong></h4>
-                    <p class="prop-desc">A bright, fully self-contained studio on the upper floor. Airy with great views, modern finishes throughout. Perfect for someone who values their own space and independence.</p>
+                    <p class="prop-desc">A bright, fully self-contained studio on the upper floor. Airy with great views, modern finishes throughout. Perfect for someone who values independence.</p>
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
                 </div>
             </div>
@@ -400,12 +339,11 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                 <div class="kp-gallery" id="kgal-4" onclick="openLightbox(4,kIdx[4])">
                     <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(4,kIdx[4])">&#10530; Expand</button>
-                    <div class="kp-count" id="kcnt-4">Loading…</div>
+                    <div class="kp-count" id="kcnt-4">1 / –</div>
                     <div class="thumb-strip" id="kth-4" onclick="event.stopPropagation()"></div>
                 </div>
                 <div class="kp-info">
-                    <span class="prop-pill warm">Studio</span>
-                    <span class="kp-sublabel">Upper Floor · Unit B</span>
+                    <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Upper Floor · Unit B</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">The second upper-floor studio — equally bright and well-finished. A private, self-contained home with great connectivity to the city centre and the coast.</p>
                     <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
@@ -415,7 +353,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials">
     <div class="section-header">
         <span class="section-tag">What tenants say</span>
@@ -424,17 +361,16 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
         <p class="section-sub">Recommendations from people who stayed in our apartments</p>
     </div>
     <div class="tgrid">
-        <div class="tcard"><p>I am leaving, thank you for everything — you are the best house owner I've ever had. Take care of yourself and if you ever come to Turkey don't hesitate to write 😊💙✨🥰</p><div class="tcard-name">Melis · Turkey</div></div>
+        <div class="tcard"><p>I am leaving, thank you for everything — you are the best house owner I've ever had. If you ever come to Turkey don't hesitate to write 😊💙✨🥰</p><div class="tcard-name">Melis · Turkey</div></div>
         <div class="tcard"><p>Thank you very much — I enjoyed the place and you were very kind and helpful all the time!</p><div class="tcard-name">Julia · Germany</div></div>
         <div class="tcard"><p>I recommend Elpidos! The apartment is modern and clean, very well located. It was a pleasure to have such a kind owner!</p><div class="tcard-name">Sarah · France</div></div>
         <div class="tcard"><p>Thank you very much for letting me stay and helping out all the time! 🙂</p><div class="tcard-name">Hanne · Germany</div></div>
         <div class="tcard"><p>The owner is the nicest person, very helpful in every way possible. The apartment is beautiful and very well located. I highly recommend!! 🌸💗</p><div class="tcard-name">Margot · Slovakia</div></div>
         <div class="tcard"><p>I had a really nice experience living in Elpidos. The apartment is in really good condition and every time I needed something Eriola was always really nice and helpful.</p><div class="tcard-name">Beatriz · Portugal</div></div>
-        <div class="tcard"><p>Ever since the beginning Eriola was very informative and transparent. If I ever needed help with anything, she was very quick to help and make things as convenient as possible.</p><div class="tcard-name">Teemu · Finland</div></div>
+        <div class="tcard"><p>Ever since the beginning Eriola was very informative and transparent. If I ever needed help with anything, she was very quick to help.</p><div class="tcard-name">Teemu · Finland</div></div>
     </div>
 </section>
 
-<!-- EXPLORE -->
 <section id="explore">
     <div class="section-header" style="padding-bottom:0">
         <span class="section-tag">While you're here</span>
@@ -448,7 +384,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     </div>
 </section>
 
-<!-- FOOTER -->
 <div id="footer-area" style="background:#111620">
     <footer>
         <div>
@@ -470,7 +405,6 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     </div>
 </div>
 
-<!-- LIGHTBOX -->
 <div id="lightbox">
     <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
     <img id="lb-img" src="" alt=""/>
@@ -480,253 +414,153 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
     <div class="lb-info" id="lb-info"></div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════════
-  HOW PHOTOS WORK — NO MANUAL COUNTS NEEDED
-  ──────────────────────────────────────────
-  The site automatically discovers your photos by trying to load
-  them one by one (1.jpg, 2.jpg, 3.jpg …) and stops when one
-  fails to load. So:
-
-  • Name your photos  1.jpg  2.jpg  3.jpg  etc.
-  • Put them in the correct folder (see below)
-  • Upload as many as you like — the site finds them all
-  • For videos: name the file  tour.mp4  in the same folder
-
-  FOLDER STRUCTURE:
-    images/
-      Elpidos/         → 1.jpg … N.jpg  +  tour.mp4 (optional)
-      Kallithea0a/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
-      Kallithea0b/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
-      Kallithea1/      → 1.jpg … N.jpg  +  tour.mp4 (optional)
-      Kallithea2a/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
-      Kallithea2b/     → 1.jpg … N.jpg  +  tour.mp4 (optional)
-════════════════════════════════════════════════════════════════ -->
 <script>
-/* ══ CONFIG ══════════════════════════════════════════════════════
-   Only edit these if you change folder names or video filenames.
-   You do NOT need to change anything when adding more photos.
-═══════════════════════════════════════════════════════════════ */
-const ELPIDOS_FOLDER = 'images/Elpidos';
-const ELPIDOS_VIDEO  = 'images/Elpidos/tour.mp4';   // set '' to hide button
+/* photos.js is loaded in <head> and sets window.PHOTO_CONFIG */
+const C = window.PHOTO_CONFIG;
 
-const KALLITHEA_PANELS = [
-    { folder: 'images/Kallithea0a', video: 'images/Kallithea0a/tour.mp4' },
-    { folder: 'images/Kallithea0b', video: 'images/Kallithea0b/tour.mp4' },
-    { folder: 'images/Kallithea1',  video: 'images/Kallithea1/tour.mp4'  },
-    { folder: 'images/Kallithea2a', video: 'images/Kallithea2a/tour.mp4' },
-    { folder: 'images/Kallithea2b', video: 'images/Kallithea2b/tour.mp4' },
+/* Build full image URL arrays from config */
+function buildUrls(key) {
+    const cfg = C[key];
+    return cfg.photos.map(f => `${cfg.folder}/${f}`);
+}
+
+const egImages = buildUrls('elpidos');
+const kImages  = [
+    buildUrls('kallithea0a'),
+    buildUrls('kallithea0b'),
+    buildUrls('kallithea1'),
+    buildUrls('kallithea2a'),
+    buildUrls('kallithea2b'),
 ];
-/* ══ END CONFIG ══════════════════════════════════════════════════ */
+let egIdx = 0;
+const kIdx = [0,0,0,0,0];
 
-
-/* ── Helpers ─────────────────────────────────────────────────── */
-// Try to load an image; resolves true/false
-function tryImage(src) {
-    return new Promise(resolve => {
-        const img = new Image();
-        img.onload  = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = src;
-    });
-}
-
-// Try to load a video; resolves true/false
-function tryVideo(src) {
-    if (!src) return Promise.resolve(false);
-    return new Promise(resolve => {
-        const v = document.createElement('video');
-        v.onloadedmetadata = () => resolve(true);
-        v.onerror = () => resolve(false);
-        v.src = src;
-        // some browsers don't fire events — timeout fallback
-        setTimeout(() => resolve(false), 3000);
-    });
-}
-
-// Discover all numbered images in a folder (1.jpg, 2.jpg …)
-async function discoverImages(folder) {
-    const imgs = [];
-    let n = 1;
-    while (true) {
-        const src = `${folder}/${n}.jpg`;
-        const ok = await tryImage(src);
-        if (!ok) break;
-        imgs.push(src);
-        n++;
-        if (n > 100) break; // safety cap
-    }
-    return imgs;
-}
-
-
-/* ══ NAV ═════════════════════════════════════════════════════════ */
+/* NAV */
 window.addEventListener('scroll', () =>
     document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60));
 
-
-/* ══ ELPIDOS GALLERY ═════════════════════════════════════════════ */
-let egImages = [], egIdx = 0;
-
-async function initElpidos() {
-    egImages = await discoverImages(ELPIDOS_FOLDER);
-    if (!egImages.length) egImages = ['images/pic02.jpg'];
-
-    // set first image
+/* ── ELPIDOS ─────────────────────────────────────────────────── */
+function initElpidos() {
     document.getElementById('eg-main').src = egImages[0];
-
-    // build dots
-    const dotsWrap = document.getElementById('eg-dots');
-    dotsWrap.innerHTML = '';
+    const wrap = document.getElementById('eg-dots');
+    wrap.innerHTML = '';
     egImages.forEach((_, i) => {
         const d = document.createElement('button');
         d.className = 'g-dot' + (i === 0 ? ' active' : '');
         d.onclick = () => setEg(i);
-        dotsWrap.appendChild(d);
+        wrap.appendChild(d);
     });
     updateEgCounter();
-
-    // check for video
-    if (ELPIDOS_VIDEO) {
-        const hasVideo = await tryVideo(ELPIDOS_VIDEO);
-        if (hasVideo) document.getElementById('eg-video-btn').style.display = 'block';
-    }
+    if (C.elpidos.video) document.getElementById('eg-video-btn').style.display = 'block';
 }
-
 function setEg(idx) {
     egIdx = (idx + egImages.length) % egImages.length;
     const img = document.getElementById('eg-main');
     img.classList.add('fading');
     setTimeout(() => { img.src = egImages[egIdx]; img.classList.remove('fading'); }, 180);
-    document.querySelectorAll('#eg-dots .g-dot').forEach((d, i) => d.classList.toggle('active', i === egIdx));
+    document.querySelectorAll('#eg-dots .g-dot').forEach((d,i) => d.classList.toggle('active', i===egIdx));
     updateEgCounter();
 }
 function egShift(dir) { setEg(egIdx + dir); }
 function updateEgCounter() {
-    document.getElementById('eg-counter').textContent = `${egIdx + 1} / ${egImages.length}`;
+    document.getElementById('eg-counter').textContent = `${egIdx+1} / ${egImages.length}`;
 }
 
+/* ── KALLITHEA ───────────────────────────────────────────────── */
+const kKeys = ['kallithea0a','kallithea0b','kallithea1','kallithea2a','kallithea2b'];
 
-/* ══ KALLITHEA GALLERIES ═════════════════════════════════════════ */
-const kImages = Array(5).fill(null).map(() => []);
-const kIdx    = [0, 0, 0, 0, 0];
-
-async function initKallithea() {
-    await Promise.all(KALLITHEA_PANELS.map(async (cfg, p) => {
-        // discover images
-        const imgs = await discoverImages(cfg.folder);
-        kImages[p] = imgs.length ? imgs : [`images/pic0${p+1}.jpg`];
-
-        // build thumbnails
+function initKallithea() {
+    kKeys.forEach((key, p) => {
+        const imgs = kImages[p];
+        // set first image
+        document.getElementById('km-' + p).src = imgs[0] || 'images/pic01.jpg';
+        // thumbnails
         const strip = document.getElementById('kth-' + p);
         strip.innerHTML = '';
-        kImages[p].forEach((src, i) => {
+        imgs.forEach((src, i) => {
             const t = document.createElement('img');
             t.className = 't-thumb' + (i === 0 ? ' active' : '');
             t.src = src; t.alt = '';
-            t.onerror = () => t.style.display = 'none';
             t.onclick = () => setKImg(p, i);
             strip.appendChild(t);
         });
-
-        // set first image
-        const main = document.getElementById('km-' + p);
-        if (main && kImages[p].length) main.src = kImages[p][0];
         updateKCounter(p);
-
-        // check for video
-        if (cfg.video) {
-            const hasVid = await tryVideo(cfg.video);
-            if (hasVid) {
-                const gal = document.getElementById('kgal-' + p);
-                const btn = document.createElement('button');
-                btn.className = 'kp-video-btn';
-                btn.innerHTML = '&#9654; Video Tour';
-                btn.onclick = (e) => { e.stopPropagation(); openVideo(cfg.video, 'Video Tour'); };
-                gal.appendChild(btn);
-            }
+        // video button
+        const vid = C[key].video;
+        if (vid) {
+            const gal = document.getElementById('kgal-' + p);
+            const btn = document.createElement('button');
+            btn.className = 'kp-video-btn';
+            btn.innerHTML = '&#9654; Video Tour';
+            btn.onclick = (e) => { e.stopPropagation(); openVideo(key); };
+            gal.appendChild(btn);
         }
-    }));
+    });
 }
-
 function setKImg(p, i) {
     kIdx[p] = (i + kImages[p].length) % kImages[p].length;
     const img = document.getElementById('km-' + p);
     img.classList.add('fading');
     setTimeout(() => { img.src = kImages[p][kIdx[p]]; img.classList.remove('fading'); }, 150);
-    document.querySelectorAll('#kth-' + p + ' .t-thumb').forEach((t, j) => t.classList.toggle('active', j === kIdx[p]));
+    document.querySelectorAll('#kth-' + p + ' .t-thumb').forEach((t,j) => t.classList.toggle('active', j===kIdx[p]));
     updateKCounter(p);
 }
 function updateKCounter(p) {
-    document.getElementById('kcnt-' + p).textContent = `${kIdx[p] + 1} / ${kImages[p].length}`;
+    document.getElementById('kcnt-' + p).textContent = `${kIdx[p]+1} / ${kImages[p].length}`;
 }
 function showKTab(idx) {
-    document.querySelectorAll('.k-panel').forEach((el, i) => el.classList.toggle('active', i === idx));
-    document.querySelectorAll('.k-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+    document.querySelectorAll('.k-panel').forEach((el,i) => el.classList.toggle('active', i===idx));
+    document.querySelectorAll('.k-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
 }
 
-
-/* ══ VIDEO OPENER ════════════════════════════════════════════════ */
-function openVideo(src, label) {
-    const lb  = document.getElementById('lightbox');
+/* ── VIDEO ───────────────────────────────────────────────────── */
+function openVideo(key) {
+    const cfg = C[key];
+    const src = `${cfg.folder}/${cfg.video}`;
     const img = document.getElementById('lb-img');
     const vid = document.getElementById('lb-video');
     img.style.display = 'none';
     vid.src = src; vid.style.display = 'block';
-    document.getElementById('lb-info').textContent = label || 'Video Tour';
+    document.getElementById('lb-info').textContent = 'Video Tour';
     lbImages = [];
-    lb.classList.add('open');
-}
-
-
-/* ══ LIGHTBOX ════════════════════════════════════════════════════ */
-let lbImages = [], lbIdx = 0;
-
-function openLightbox(src, idx) {
-    lbImages = (src === 'elpidos') ? egImages : kImages[src];
-    lbIdx = Math.max(0, Math.min(idx, lbImages.length - 1));
-    const img = document.getElementById('lb-img');
-    const vid = document.getElementById('lb-video');
-    vid.pause(); vid.src = ''; vid.style.display = 'none';
-    img.style.display = 'block';
-    img.src = lbImages[lbIdx];
-    updateLbInfo();
     document.getElementById('lightbox').classList.add('open');
 }
-function updateLbInfo() {
-    document.getElementById('lb-info').textContent =
-        lbImages.length ? `${lbIdx + 1} / ${lbImages.length}` : '';
+
+/* ── LIGHTBOX ────────────────────────────────────────────────── */
+let lbImages = [], lbIdx = 0;
+function openLightbox(src, idx) {
+    lbImages = (src === 'elpidos') ? egImages : kImages[src];
+    lbIdx = Math.max(0, Math.min(idx, lbImages.length-1));
+    const img = document.getElementById('lb-img');
+    const vid = document.getElementById('lb-video');
+    vid.pause(); vid.src=''; vid.style.display='none';
+    img.style.display='block'; img.src=lbImages[lbIdx];
+    document.getElementById('lb-info').textContent = `${lbIdx+1} / ${lbImages.length}`;
+    document.getElementById('lightbox').classList.add('open');
 }
 function lbShift(dir) {
     if (!lbImages.length) return;
-    lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+    lbIdx = (lbIdx+dir+lbImages.length) % lbImages.length;
     document.getElementById('lb-img').src = lbImages[lbIdx];
-    updateLbInfo();
+    document.getElementById('lb-info').textContent = `${lbIdx+1} / ${lbImages.length}`;
 }
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
     const vid = document.getElementById('lb-video');
-    vid.pause(); vid.src = '';
-    document.getElementById('lb-img').style.display = 'block';
-    document.getElementById('lb-video').style.display = 'none';
+    vid.pause(); vid.src='';
+    document.getElementById('lb-img').style.display='block';
+    document.getElementById('lb-video').style.display='none';
 }
-document.getElementById('lightbox').addEventListener('click', e => { if (e.target.id === 'lightbox') closeLightbox(); });
+document.getElementById('lightbox').addEventListener('click', e => { if(e.target.id==='lightbox') closeLightbox(); });
 document.addEventListener('keydown', e => {
     if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft')  lbShift(-1);
-    if (e.key === 'ArrowRight') lbShift(1);
+    if (e.key==='Escape') closeLightbox();
+    if (e.key==='ArrowLeft') lbShift(-1);
+    if (e.key==='ArrowRight') lbShift(1);
 });
 
-
-/* ══ INIT ════════════════════════════════════════════════════════ */
-async function init() {
-    await Promise.all([initElpidos(), initKallithea()]);
-    // hide loading overlay
-    const overlay = document.getElementById('loading-overlay');
-    overlay.classList.add('hidden');
-    setTimeout(() => overlay.style.display = 'none', 600);
-}
-init();
+initElpidos();
+initKallithea();
 </script>
 </body>
 </html>
