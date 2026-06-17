@@ -218,7 +218,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
         <div class="prop-card">
             <div class="elpidos-grid">
                 <div class="eg-gallery">
-                    <img class="main-img" id="eg-main" src="images/Elpidos/1.jpg" onerror="this.src='images/pic02.jpg'" alt="Elpidos apartment"/>
+                    <img class="main-img" id="eg-main" src="images/Elpidos/1.jpeg" onerror="this.src='images/pic02.jpg'" alt="Elpidos apartment"/>
                     <button class="g-btn-tl" id="eg-vid-btn" onclick="openVideo('images/Elpidos/tour.mp4')">&#9654; Video Tour</button>
                     <button class="g-btn-tr" onclick="openLightbox('elpidos', egIdx)">&#10530; Expand</button>
                     <div class="g-counter" id="eg-counter">1 / …</div>
@@ -270,7 +270,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
             <!-- Panel 0 -->
             <div class="k-panel active" id="kpanel-0">
                 <div class="kp-gallery" id="kgal-0" onclick="openLightbox(0,kIdx[0])">
-                    <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A"/>
+                    <img class="main-img" id="km-0" src="images/Kallithea0a/1.jpeg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(0,kIdx[0])">&#10530; Expand</button>
                     <div class="kp-count" id="kcnt-0">…</div>
                     <div class="thumb-strip" id="kth-0" onclick="event.stopPropagation()"></div>
@@ -285,7 +285,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
             <!-- Panel 1 -->
             <div class="k-panel" id="kpanel-1">
                 <div class="kp-gallery" id="kgal-1" onclick="openLightbox(1,kIdx[1])">
-                    <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B"/>
+                    <img class="main-img" id="km-1" src="images/Kallithea0b/1.jpeg" onerror="this.src='images/pic01.jpg'" alt="Ground Floor Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(1,kIdx[1])">&#10530; Expand</button>
                     <div class="kp-count" id="kcnt-1">…</div>
                     <div class="thumb-strip" id="kth-1" onclick="event.stopPropagation()"></div>
@@ -300,7 +300,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
             <!-- Panel 2 -->
             <div class="k-panel" id="kpanel-2">
                 <div class="kp-gallery" id="kgal-2" onclick="openLightbox(2,kIdx[2])">
-                    <img class="main-img" id="km-2" src="images/Kallithea1/1.jpg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms"/>
+                    <img class="main-img" id="km-2" src="images/Kallithea1/1.jpeg" onerror="this.src='images/pic01.jpg'" alt="First Floor – 4 Rooms"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(2,kIdx[2])">&#10530; Expand</button>
                     <div class="kp-count" id="kcnt-2">…</div>
                     <div class="thumb-strip" id="kth-2" onclick="event.stopPropagation()"></div>
@@ -316,7 +316,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
             <!-- Panel 3 -->
             <div class="k-panel" id="kpanel-3">
                 <div class="kp-gallery" id="kgal-3" onclick="openLightbox(3,kIdx[3])">
-                    <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A"/>
+                    <img class="main-img" id="km-3" src="images/Kallithea2a/1.jpeg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio A"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(3,kIdx[3])">&#10530; Expand</button>
                     <div class="kp-count" id="kcnt-3">…</div>
                     <div class="thumb-strip" id="kth-3" onclick="event.stopPropagation()"></div>
@@ -331,7 +331,7 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
             <!-- Panel 4 -->
             <div class="k-panel" id="kpanel-4">
                 <div class="kp-gallery" id="kgal-4" onclick="openLightbox(4,kIdx[4])">
-                    <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B"/>
+                    <img class="main-img" id="km-4" src="images/Kallithea2b/1.jpeg" onerror="this.src='images/pic01.jpg'" alt="Upper Studio B"/>
                     <button class="kp-expand" onclick="event.stopPropagation();openLightbox(4,kIdx[4])">&#10530; Expand</button>
                     <div class="kp-count" id="kcnt-4">…</div>
                     <div class="thumb-strip" id="kth-4" onclick="event.stopPropagation()"></div>
@@ -449,10 +449,24 @@ function probe(src) {
 
 // Probe all N images in parallel, return only the ones that loaded, in order
 async function probeFolder(folder) {
-    const candidates = Array.from({length: MAX}, (_, i) => `${folder}/${i+1}.jpg`);
-    const results = await Promise.all(candidates.map(probe));
-    // Keep only loaded ones, preserving numeric order
-    return results.filter(Boolean);
+    // Try both .jpeg and .jpg in parallel
+    const jpegCandidates = Array.from({length: MAX}, (_, i) => `${folder}/${i+1}.jpeg`);
+    const jpgCandidates  = Array.from({length: MAX}, (_, i) => `${folder}/${i+1}.jpg`);
+    const all = await Promise.all([...jpegCandidates, ...jpgCandidates].map(probe));
+    const found = all.filter(Boolean);
+    // De-duplicate by number (prefer .jpeg), sort numerically
+    const seen = new Set();
+    return found
+        .sort((a,b) => {
+            const na = parseInt(a.match(/(\d+)\./)[1]);
+            const nb = parseInt(b.match(/(\d+)\./)[1]);
+            return na - nb;
+        })
+        .filter(src => {
+            const n = src.match(/(\d+)\.(jpe?g)$/i)?.[1];
+            if (!n || seen.has(n)) return false;
+            seen.add(n); return true;
+        });
 }
 
 /* ── state ── */
