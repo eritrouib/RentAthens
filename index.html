@@ -146,6 +146,49 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 .lb-prev:hover,.lb-next:hover{background:var(--accent);border-color:var(--accent);color:var(--navy)}
 .lb-info{margin-top:1rem;font-size:.7rem;letter-spacing:.12em;color:rgba(255,255,255,.35);text-align:center}
+/* ── WHATSAPP FLOATING BUTTON ── */
+#wa-btn{
+    position:fixed;bottom:2rem;right:2rem;z-index:500;
+    width:58px;height:58px;border-radius:50%;
+    background:#25d366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 20px rgba(37,211,102,.45);
+    text-decoration:none;
+    transition:transform .2s,box-shadow .2s;
+    animation:waPulse 2.5s ease-in-out infinite;
+}
+#wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.6);animation:none}
+#wa-btn i{color:#fff;font-size:1.7rem}
+@keyframes waPulse{
+    0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45)}
+    50%{box-shadow:0 4px 32px rgba(37,211,102,.75),0 0 0 8px rgba(37,211,102,.12)}
+}
+.wa-tooltip{
+    position:absolute;right:68px;
+    background:rgba(10,14,24,.92);color:#fff;
+    font-size:.7rem;font-weight:700;letter-spacing:.1em;
+    white-space:nowrap;padding:.4rem .9rem;
+    opacity:0;pointer-events:none;
+    transition:opacity .2s;
+}
+#wa-btn:hover .wa-tooltip{opacity:1}
+
+/* ── AVAILABILITY BADGE ── */
+.avail-badge{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-size:.62rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;padding:.32rem .85rem;
+    border-radius:0;
+}
+.avail-badge.contact{
+    background:rgba(77,184,196,.12);
+    border:1px solid rgba(77,184,196,.35);
+    color:var(--accent);
+}
+.avail-badge.contact i{font-size:.7rem}
+.avail-badge a{color:inherit;text-decoration:none}
+.avail-badge a:hover{color:#fff}
+
 @media(max-width:900px){
     .about-inner{grid-template-columns:1fr;gap:2.5rem}
     .elpidos-grid,.k-panel.active{grid-template-columns:1fr}
@@ -240,7 +283,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                         <span class="p-tag">4 min · Metro</span><span class="p-tag">3 min · AUEB</span>
                         <span class="p-tag">Renovated</span>
                     </div>
-                    <a class="prop-maplink" href="https://goo.gl/maps/ubNzF62PGYFniL6R6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/ubNzF62PGYFniL6R6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20the%20Elpidos%20apartment.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -279,7 +325,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Ground Floor · Unit A</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio A</strong></h4>
                     <p class="prop-desc">A bright, self-contained studio on the ground floor. Fully furnished with all essentials. Perfect for a professional or student wanting private, comfortable accommodation.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20Ground%20Floor%20Studio%20A%20in%20Kallithea.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
             <!-- Panel 1 -->
@@ -294,7 +343,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Ground Floor · Unit B</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Ground Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">Another well-appointed ground-floor studio. Cosy and private, with natural light and modern furnishings. Great transport connections right on the doorstep.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20Ground%20Floor%20Studio%20B%20in%20Kallithea.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
             <!-- Panel 2 -->
@@ -310,7 +362,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <h4 class="prop-title" style="font-size:1.35rem">First Floor<br><strong>4-Room Apartment</strong></h4>
                     <p class="prop-desc">A spacious shared apartment with four individual rooms. Ideal for students or working professionals who enjoy communal living while keeping their own private space.</p>
                     <div class="prop-tags"><span class="p-tag">4 Private Rooms</span><span class="p-tag">Shared Kitchen &amp; Bath</span></div>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20the%201st%20Floor%20Apartment%20in%20Kallithea.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
             <!-- Panel 3 -->
@@ -325,7 +380,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Upper Floor · Unit A</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio A</strong></h4>
                     <p class="prop-desc">A bright, fully self-contained studio on the upper floor. Airy with great views, modern finishes throughout. Perfect for someone who values independence.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20Upper%20Studio%20A%20in%20Kallithea.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
             <!-- Panel 4 -->
@@ -340,7 +398,10 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
                     <span class="prop-pill warm">Studio</span><span class="kp-sublabel">Upper Floor · Unit B</span>
                     <h4 class="prop-title" style="font-size:1.35rem">Upper Floor<br><strong>Studio B</strong></h4>
                     <p class="prop-desc">The second upper-floor studio — equally bright and well-finished. A private, self-contained home with great connectivity to the city centre and the coast.</p>
-                    <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:auto">
+                        <a class="prop-maplink" href="https://goo.gl/maps/gp7qa4vSJVJTMQgN6" target="_blank"><i class="fa-solid fa-location-dot"></i> View on Google Maps</a>
+                        <span class="avail-badge contact"><i class="fa-solid fa-circle-info"></i><a href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%27m%20interested%20in%20Upper%20Studio%20B%20in%20Kallithea.%20Is%20it%20available%3F" target="_blank">Contact for availability</a></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -398,6 +459,12 @@ footer{background:#111620;padding:4rem 3rem 0;display:grid;grid-template-columns
         <p>Athens, Greece</p>
     </div>
 </div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a id="wa-btn" href="https://wa.me/306974340718?text=Hi%20Eriola!%20I%20found%20your%20listing%20on%20RentAthens%20and%20I%27d%20like%20to%20know%20more." target="_blank" aria-label="Chat on WhatsApp">
+    <span class="wa-tooltip">Chat on WhatsApp</span>
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
 
 <div id="lightbox">
     <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
